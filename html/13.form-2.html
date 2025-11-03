@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 관련 태그 2</title>
+</head>
+<body>
+    <h1>select 태그 : 목록 선택</h1>
+    <!-- 하나의 option만 선택 가능 -->
+    <select>
+        <option value="naver">naver.com</option>
+        <option value="google">google.com</option>
+        <option value="kakao">kakao.com</option>
+    </select>
+    <!-- 여러개의 option을 선택 가능 -->
+    <select multiple>
+        <option value="seoul">서울</option>
+        <option value="busan">부산</option>
+        <option value="incheon">인천</option>
+    </select>
+
+    <h1>textarea 태그 : 여러행 입력 태그</h1>
+    <!-- 2행 20열로 출력 -->
+    <textarea></textarea> <br>
+    <!-- 10행 30열로 출력 -->
+    <textarea rows="10" cols="30"></textarea> <br>
+    <!-- value 속성 대신 내부 텍스트로 입력된 값이 저장 -->
+    <!-- textarea는 내부 텍스트가 그대로 출력 (공백도 출력) -->
+    <textarea>안녕</textarea>
+    <textarea>
+        안녕
+    </textarea> <br>
+
+    <h1>label 태그 : 라벨 붙이기</h1>
+    <!-- for="male" : id="male" 인 태그의 라벨 -->
+    <label for="male">
+        <input type="radio" name="gender" value="male" id="male">남
+    </label>
+    <label for="female">
+        <input type="radio" name="gender" value="female" id="female">여
+    </label>
+    <hr>
+    <label for="h1">
+        <input type="checkbox" name="hobbies" value="축구" id="h1">축구
+    </label>
+    <label for="h2">
+        <input type="checkbox" name="hobbies" value="요리" id="h2">요리
+    </label>
+    <label for="h3">
+        <input type="checkbox" name="hobbies" value="여행" id="h3">여행
+    </label>
+
+    <h1>fieldset : 입력 요소들의 그룹화</h1>
+    <fieldset>
+        <legend>성별</legend>
+        <label for="male">
+            <input type="radio" name="gender" value="male" id="male">남
+        </label>
+        <label for="female">
+            <input type="radio" name="gender" value="female" id="female">여
+        </label>
+    </fieldset>
+</body>
+</html>

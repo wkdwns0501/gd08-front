@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표 관련 태그 2</title>
+</head>
+<body>
+    <h1>테이블 색 채우기</h1>
+    <table border="1"> <!-- 4행 2열-->
+    <colgroup> <!-- 열의 서식 지정-->
+        <col width="10%" style="background-color: aquamarine;"> <!-- 1열 설정 -->
+        <col width="40%">                                                              <!-- 2열 설정 -->
+    </colgroup>
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>이름</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>홍길동</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>김삿갓</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>인원수</td>
+            <td>2명</td>
+        </tr>
+    </tfoot>
+</table>
+</body>
+</html>

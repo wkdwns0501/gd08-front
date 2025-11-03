@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 관련 태그 1</title>
+</head>
+<body>
+    <form>
+    <h1>input type="text"</h1>
+    <!-- text : type의 기본 속성값-->
+    <input> <br>
+    <!-- 입력 상자의 크기를 5로 지정 -->
+    <input type="text" size="5"> <br>
+    <!-- 입력 상자의 크기를 5로 지정, 입력 값의 길이를 4로 지정 -->
+    <input type="text" size="5" maxlength="4"> <br>
+    <!-- 입력 메세지 -->
+    <input type="text" placeholder="검색어를 입력하세요"> <br>
+    <!-- 필수 입력 -->
+    <input type="text" required> <br>
+    <!-- 초기 입력값 설정 -->
+    <input type="text" value="날짜"> <br>
+    <!-- 사용 가능, 입력값 변경 불가, input 태그 유효-->
+    <input type="text" value="날짜" readonly> <br>
+    <!-- 완전 사용 불가, input 태그 무효-->
+    <input type="text" value="날짜" disabled>
+
+    <h1>input 태그의 type</h1>
+    <h3>password : 입력되는 내용이 기호 처리</h3>
+    <input type="password" placeholder="비밀번호"> <br>
+    <h3>number : 숫자 입력</h3>
+    <input type="number" placeholder="1~12" min="1" max="12"> <br>
+    <h3>email : 이메일 형식</h3>
+    <input type="email" placeholder="이메일"> <br>
+    <h3>date : 날짜 형식 입력</h3>
+    <input type="date" placeholder="날짜"> <br>
+    <h3>color : 색상표 선택</h3>
+    <input type="color"> <br>
+    <h3>hidden : 값은 있지만 화면에 보이지 않음</h3>
+    <input type="hidden" value="값이 보이지 않음"> <br>
+    <h3>file : 파일 선택, 업로드시 파일 선택</h3>
+    <input type="file"> <br>
+    <h3>button : 이벤트 처리로 기능 설정</h3>
+    <input type="button" value="버튼"> <br>
+    <h3>submit : form 태그에 설정된 입력값을 action 속성의 값으로 페이지 전송</h3>
+    <input type="submit" value="전송"> <br>
+    <h3>reset : form 태그의 입력된 값을 초기화</h3>
+    <input type="reset" value="입력 취소"> <br>
+    <h3>radio : 단일 선택, name 속성의 값으로 단일 선택</h3>
+    <input type="radio" name="gender" value="male">남
+    <input type="radio" name="gender" value="female">여 <br>
+    <input type="radio" name="pass" value="1">합격
+    <input type="radio" name="pass" value="0">불합격
+    <h3>checkbox : 다중 선택</h3>
+    <input type="checkbox" name="hobbies" value="축구">축구
+    <input type="checkbox" name="hobbies" value="요리">요리
+    <input type="checkbox" name="hobbies" value="여행">여행
+    </form>
+</body>
+</html>

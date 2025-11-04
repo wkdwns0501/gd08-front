@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 과제 5</title>
+</head>
+<body>
+    <h1>납품 대장</h1>
+    <fieldset>
+        <legend>납품자 정보</legend>
+        <div>1. 납품자명 : <input placeholder="name"></div>
+        <div>2. email : <input type="email" placeholder="hkd@naver.com"></div>
+    </fieldset>
+    <fieldset>
+            <legend>납품 정보</legend>
+            <ul>
+                <li class="pb">
+                    상품명 : <input>
+                </li>
+                <li class="pb">
+                    납품수량 : <input type="number" placeholder="최소 100" min="100">
+                </li>
+                <li class="pb">
+                    납품등급 : <input type="range" min="1" max="100">
+                </li>
+                <li class="pb">
+                    기타사항 : <textarea></textarea>
+                </li>
+            </ul>
+        </fieldset>
+        <div>
+            <button>send message</button>
+        </div>
+</body>
+</html>

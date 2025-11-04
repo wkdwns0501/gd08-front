@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 입출력 2</title>
+</head>
+<body>
+    <p>
+        prompt 창을 띄워서 숫자를 입력받아 입력받은 숫자를 #num에 출력하기
+    </p>
+    <div id="num"></div>
+    <script>
+        let num = prompt("숫자를 입력하세요");
+        document.getElementById("num").innerHTML = num + " 입력";
+    </script>
+</body>
+</html>

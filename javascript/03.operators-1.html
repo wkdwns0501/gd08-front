@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연산자 1</title>
+</head>
+<body>
+    <script>
+        /* 
+            1. 산술 연산자
+                - 더하기 (+)
+                - 빼기 (-)
+                - 곱하기 (*)
+                - 나누기 (/)
+                - 나머지 (%)
+                - 증감 (++, --)
+                - 제곱 (**) ex) 2 ** 3 -> 8
+            2. 비교 연산자 (관계 연산자) : >, >=, <, <=, ===, !=, !==
+                - 같다
+                    == : 값만 비교 (1 == '1' -> true)
+                    === : 값과 자료형 비교 (1 === '1' -> false)
+                - 같지 않다
+                    != : 값만 비교 (1 != '1' -> false)
+                    !== : 값과 자료형 비교 (1 !== '1' -> true)
+            3. 논리 연산자 : && (AND), || (OR), ! (NOT)
+            4. 대입 연산자 : =, +=, -+, *= ...
+                lvalue (왼쪽 값) : 변수
+                rvalue (오른쪽 값) : 변수, 값 , 수식
+            5. 조건 연산자 : (조건식) ? 참 : 거짓
+            6. 문자열 연산자 : + (문자열 더하기)
+        */
+    </script>
+    <script>
+        /* 
+            최저 시급이 9620원이다. 8시간까지는 최저 시급을 받고,
+            8시간 초과 근무는 최저시급의 1.5배를 받는 다고 할 때
+            10시간 근무를 한 경우 일당 출력하기
+        */
+        let payPerhour =9260;
+        let workTime = 10;
+        let totalPay = (payPerhour * workTime) + ((workTime > 8)?(payPerhour * 0.5 * (workTime-8)):0);
+        alert("총급여 :" + totalPay);
+        totalPay = (workTime <= 8)?payPerhour * workTime:
+                        (payPerhour * workTime + payPerhour * 0.5 * (workTime-8));
+        alert("총급여 :" + totalPay);
+    </script>
+</body>
+</html>

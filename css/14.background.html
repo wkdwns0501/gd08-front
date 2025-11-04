@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경</title>
+    <style>
+        #div-bg {
+            border: 20px solid blue;
+            background-color: wheat;
+            padding: 20px;
+            width: 50%; /* 내용 영역의 크기만 50% */
+            box-sizing: border-box; /* border의 범위도 width에 포함 */
+        }
+        .test {
+            margin: 30px;
+            background-color: yellow;
+            border: 5px dotted black;
+            padding: 20px;
+        }
+        #test1 { /* 기본값 */
+            background-clip: border-box; /* 배경을 border까지 포함 */
+        }
+        #test2 {
+            background-clip: padding-box; /* 배경을 padding까지 포함 (border 제외) */
+        }
+        #test3 {
+            background-clip: content-box; /* 배경을 내용만 포함 (border,padding 제외) */
+        }
+        #bg-img {
+            border: 1px solid black;
+            width: 70%;
+            height: 300px;
+            background-image: url(../html/img/PC.png);
+            background-repeat: repeat; /* 기본값, 해당요소에 가득 찰때까지 반복 */
+            background-repeat: repeat-x; /* 해당요소에 x축이 가득 찰때까지 반복 */
+            background-repeat: repeat-y; /* 해당요소에 y축이 가득 찰때까지 반복 */
+            background-repeat: no-repeat; 
+            background-image: url(../html/img/bgsample.jpg);
+            background-size: auto; /* 기본 이미지 크기 자동 (유지) */
+            background-size: contain; /* 배경 이미지를 전부 보이게, 공백 존재 가능성 있음 */
+            background-size: cover; /* 배경 이미지를 전부 보이게, 공백 존재 X, 이미지 잘릴 가능성 있음*/
+            /* background-size: 150px 150px; */
+            /* background-size: 50% 50%; */
+            background-position: left top; /* 기본값 */
+            background-position: right bottom; /* 오른쪽 아래 */
+            background-position: center center; /* 가운데 */
+            background-position: 30px 50px; /* 지정 위치 */
+            background-attachment: scroll; /* 기본값, 배경이 요소와 함께 스크롤 */
+            background-attachment: fixed; /* 화면에 완전 고정, 스크롤을 해도 고정된 상태 */
+            background-attachment: local; /* 요소의 스크롤에 따라 움직임 */
+        }
+    </style>
+</head>
+<body>
+    <body style="background-color:skyblue;">
+    
+    <h1>배경 관련 스타일 (background)</h1>
+
+    <h3>background-color: 배경색 지정하고자 할 때 사용</h3>
+    <a href="http://www.w3schools.com/colors/colors_names.asp" target="_blank">색상명 참고 사이트</a>
+    <br>
+    <a href="http://www.colorpicker.com/" target="_blank">색상 추출 사이트</a>
+
+    <div id="div-bg">
+        헌법개정안은 국회가 의결한 후 30일 이내에 국민투표에 붙여 국회의원선거권자 과반수의 투표와 투표자 과반수의 찬성을 얻어야 한다. 피고인의 자백이 고문·폭행·협박·구속의 부당한 장기화 또는 기망 기타의 방법에 의하여 자의로 진술된 것이 아니라고 인정될 때 또는 정식재판에 있어서 피고인의 자백이 그에게 불리한 유일한 증거일 때에는 이를 유죄의 증거로 삼거나 이를 이유로 처벌할 수 없다.
+    </div>
+
+    <hr>
+
+    <h3>background-clip : 배경을 적용시키고자 하는 범위를 지정할 때 사용</h3>
+    <pre>
+    선택자{
+        background-clip:border-box(기본값)|padding-box|content-box;
+    }
+    </pre>
+
+    <div class="test" id="test1">헌법개정안은 국회가 의결한 후 30일 이내에 국민투표에 붙여 국회의원선거권자 과반수의 투표와 투표자 과반수의 찬성을 얻어야 한다. 피고인의 자백이 고문·폭행·협박·구속의 부당한 장기화 또는 기망 기타의 방법에 의하여 자의로 진술된 것이 아니라고 인정될 때 또는 정식재판에 있어서 피고인의 자백이 그에게 불리한 유일한 증거일 때에는 이를 유죄의 증거로 삼거나 이를 이유로 처벌할 수 없다.</div>
+    <div class="test" id="test2">헌법개정안은 국회가 의결한 후 30일 이내에 국민투표에 붙여 국회의원선거권자 과반수의 투표와 투표자 과반수의 찬성을 얻어야 한다. 피고인의 자백이 고문·폭행·협박·구속의 부당한 장기화 또는 기망 기타의 방법에 의하여 자의로 진술된 것이 아니라고 인정될 때 또는 정식재판에 있어서 피고인의 자백이 그에게 불리한 유일한 증거일 때에는 이를 유죄의 증거로 삼거나 이를 이유로 처벌할 수 없다.</div>
+    <div class="test" id="test3">헌법개정안은 국회가 의결한 후 30일 이내에 국민투표에 붙여 국회의원선거권자 과반수의 투표와 투표자 과반수의 찬성을 얻어야 한다. 피고인의 자백이 고문·폭행·협박·구속의 부당한 장기화 또는 기망 기타의 방법에 의하여 자의로 진술된 것이 아니라고 인정될 때 또는 정식재판에 있어서 피고인의 자백이 그에게 불리한 유일한 증거일 때에는 이를 유죄의 증거로 삼거나 이를 이유로 처벌할 수 없다.</div>
+
+    <hr>
+
+    <h3>배경 이미지 테스트</h3>
+    <pre>
+    선택자{
+        background-image: url("이미지 경로");
+        background-repeat: repeat | repeat-x | repeat-y | no-repeat;
+        background-size: auto | contain | cover | px px | % %;
+        background-position: 좌/우/가운데 위/아래/가운데 | px px | % %;
+        background-attachment:scroll|fixed;
+    }
+    </pre>
+
+    <div id="bg-img" >
+
+    </div>
+</body>
+</html>

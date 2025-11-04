@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 과제 4</title>
+</head>
+<style>
+    .form-row {
+            margin-bottom: 8px;
+            /* 텍스트 줄 간격에 맞춰 수직 정렬을 쉽게 하기 위해 사용 */
+            line-height: 1.8; 
+        }
+        .label {
+            /* 라벨을 한 줄에 배치 */
+            display: inline-block; 
+            /* 최소 너비만 지정 (수치 조정 최소화) */
+            min-width: 70px; 
+            text-align: center; 
+            font-weight: bold;
+            /* margin-right: 5px; 라벨과 입력 필드 사이 간격 */
+        }
+        .fit-button {
+            /* 버튼의 내부 여백을 줄여 크기를 최소화 */
+            padding: 2px 5px; 
+            
+            /* 너비를 100%로 설정하여 셀 너비에 맞추기 */
+            width: auto;
+            
+           /* 텍스트 크기만큼 버튼 크기가 결정됩니다. */
+            white-space: nowrap; 
+        }
+</style>
+<body>
+    <h1>공지사항 작성하기 폼과 공지사항 목록 테이블을 작성하시오.</h1>
+    <form>
+    <fieldset>
+        <legend>공지사항 작성하기</legend>
+        
+        <div class="form-row"><label class="label"><b>제목</b></label><input placeholder="제목을 입력하시오"></div>
+        <div class="form-row"><label class="label"><b>내용</b></label><input style="width: 200px; height: 100px; text-align: justify;" placeholder="내용을 입력하시오"></div>
+        <div class="form-row"><label class="label"><b>첨부파일</b></label><input type="file"></div>
+        <div style="padding-left: 20%; padding-top: 15px;"><button>작성하기</button></div>
+        
+    </fieldset>
+    <table style="width: 85%" border="1">
+        <tr>
+            <th>번호</th>
+            <th colspan="2">제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>공지사항 제목 9</td>
+            <td style="width: 60px; text-align: center"><button class="fit-button">바로가기</button></td>
+            <td>user01</td>
+            <td>2021-03-29</td>
+            <td>34</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>공지사항 제목 6</td>
+            <td style="width: 60px; text-align: center"><button class="fit-button">바로가기</button></td>
+            <td>answ445</td>
+            <td>2021-03-12</td>
+            <td>67</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>공지사항 제목 3</td>
+            <td style="width: 60px; text-align: center"><button class="fit-button">바로가기</button></td>
+            <td>testg12</td>
+            <td>2021-03-01</td>
+            <td>98</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>공지사항 제목 2</td>
+            <td style="width: 60px; text-align: center"><button class="fit-button">바로가기</button></td>
+            <td>palwe3</td>
+            <td>2021-01-02</td>
+            <td>85</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>공지사항 제목 1</td>
+            <td style="width: 60px; text-align: center"><button class="fit-button">바로가기</button></td>
+            <td>xml23</td>
+            <td>2020-12-24</td>
+            <td>124</td>
+        </tr>
+        <tr>
+            <th colspan="4">전체공지사항 개수</th>
+            <th colspan="2"> 5개</th>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

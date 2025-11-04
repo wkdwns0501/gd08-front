@@ -1,0 +1,232 @@
+article, aside, footer{
+    display: block;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+.wrap {
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+/* header */
+.header {
+    height: 200px;
+    margin: 5px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.header_top {
+    border: 1px solid gray;
+    height: 80%;
+    margin-bottom: 5px;
+    display: flex;
+}
+.header_nav {
+    border: 1px solid gray;
+    height: 20%;
+}
+.header_logo, .header_alarm {
+    width: 20%;
+}
+.header_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header_logo > a > img {
+    width: 100%;
+}
+.header_search {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search_form {
+    width: 70%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search_form > input {
+    width: 70%;
+    height: 40px;
+    margin: 5px;
+}
+.search_form > button {
+    width: 20%;
+    height: 40px;
+    margin: 5px;
+}
+.menu_wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.main_menu {
+    width: 20%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_menu > a {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+}
+/* section */
+.content_wrap {
+    min-height: 500px;
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 5px;
+}
+.content_left {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-right: 5px;
+}
+.content_right {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 5px;
+}
+.content_banner{
+    border: 1px solid gray;
+    width: 100%;
+    height: 150px;
+}
+.content_banner > img {
+    width: 100%;
+    height: 100%;
+}
+.content_notice {
+    border: 1px solid gray;
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+}
+.content_notice_left {
+    height: 100%;
+    padding: 10px;
+    justify-content: left;
+    align-items: center;
+}
+.content_notice_right {
+    color: black;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+}
+.content_notice_right > div > a {
+    margin: 0px 10px;
+}
+.content_trend{
+    border: 1px solid gray;
+    flex: 5;
+}
+.content_trend > img{
+    width: 100%;
+    height: 100%;
+}
+.content_side_myinfo {
+    border: 1px solid gray;
+    height: 150px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.content_side_ad {
+    border: 1px solid gray;
+    flex: 1;
+}
+.content_side_ad > img {
+    width: 100%;
+    height: 100%;
+}
+.login_form {
+    width: 90%;
+    height: 70%;
+    display: flex;
+}
+.login_input_wrap {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.login_input_wrap > input {
+    height: 100%;
+}
+.login_btn {
+    width: 30%;
+}
+.login_btn > button {
+    width: 100%;
+    height: 100%;
+}
+.login_etc {
+    width: 90%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap : 10px;
+}
+.login_etc a {
+    color: black;
+    font-size: 12px;
+}
+/* footer */
+.footer {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.footer_link {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.footer_link > a {
+    color: black;
+    font-weight: bold;
+    margin: 15px;
+}
+.footer_info {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.footer_info_company{
+    height: 80%;
+    list-style-type: "-";
+    padding-left: 20px;
+    margin-top: 5px;
+}
+.footer_info_company > li {
+    font-size: 12px;
+}
+.footer_info_copyright {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

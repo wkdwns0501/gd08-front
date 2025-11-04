@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자료형</title>
+</head>
+<body>
+    <script>
+        /* 
+            자료형 : 데이터의 종류, 저장된 데이터의 특징을 표현
+            1. 기본자료형
+                - number : 정수 / 실수 구분 X
+                    NaN (Not a Number) : 숫자가 아닌경우 true
+                    Infinity : 불능. 0으로 나눈 경우
+                - string : 문자 / 문자열 (작은따옴표, 큰따옴표로 사용)
+                - boolean : 논리값 (true / false)
+                - null : 값이 없음
+                - undefined : 정의되지 않은 (값이 저장된 적이 없는)
+            2. 자바스크립트 변수의 특징
+                - 동적 타입 (선언하지 않아도 변수 사용가능)
+                - 변수 선언시 자료형 작성 X
+                - 변수에 값을 저장할 때 자료형 결정 -> 변수값이 변경되면 자료형이 변경
+            3. 변수 선언 키워드
+                - var
+                    1) 범위 : 함수 레벨 (함수 안에서만 사용 가능한 변수) -> 지역 변수
+                    2) 같은 변수명으로 재선언 가능
+                    3) 변수의 초기화 생략 가능 (undefined 상태)
+                    4) 재할당 가능
+                - let
+                    1) 범위 : {블록} (블록 안에서만 사용 가능한 변수) -> 지역변수
+                    2) 같은 변수명으로 재선언 불가
+                    3) 변수의 초기화 생략 가능 (undefined 상태)
+                    4) 재할당 가능
+                - const (ES6 표준)
+                    1) 범위 : {블록} (블록 안에서만 사용 가능한 변수) -> 지역변수
+                    2) 변수 선언시 생략 불가
+                    3) 같은 변수명으로 재선언 불가
+                    4) 변수의 초기화 필수 -> 상수값 (저장된 값 변경 불가)
+                    5) 재할당 불가
+            4. 호이스팅 (hoisting)
+                - 코드 중 항상 먼저 처리되는 코드가 존재
+                - 대상 : 변수 선언, 함수 정의 등
+                ex) 함수 실행보다 선언이 뒤에 있는 경우 선언 먼저 처리
+        */
+    </script>
+    <script>
+        var a; //변수 선언
+        console.log(a); //초기화 되지 않으므로 undefined 상태. 오류 발생 X
+        var a; //재선언            //a가 선언도 안되어 있다면 오류발생 
+        a = 10; //초기화
+        console.log(a, typeof a); //typeof 변수 : 변수의 자료형 리턴
+        a = "Hello World!"
+        console.log(a, typeof a); //typeof 변수 : 변수의 자료형 리턴
+        b = false; // 선언 없이 값 저장 가능
+        console.log(b, typeof b);
+        //호이스팅 (변수 선언 먼저 처리)
+        c = Math.sqrt(25); //c = 5 저장
+        var c;                   //c 변수 선언
+        console.log(c, typeof c);
+        //-------------//
+        let user = "user1";
+        console.log(user, typeof user);
+        //let user = "hong"; //변수 재선언 불가
+        // console.log(user, typeof user)
+        //-------------//
+        const pw = "pw1"; //상수 선언 : 값 변경 불가
+        console.log(pw, typeof pw);
+        //pw = "1234"; //상수 이므로 변경 불가
+        //console.log(pw, typeof pw)
+    </script>
+    <script>
+        if (true) {
+            var age = 10; //age 변수 사용 범위 : 함수 영역
+        }
+        console.log(age, typeof age);
+        if (true) { 
+            let name = "홍길동"; //name 변수 사용 범위 : 블록 영역
+            console.log(name, typeof name);
+        }
+        console.log(name, typeof name);
+        if (true) {
+            let name="홍길동";
+            console.log(name, typeof name);
+            const hobby = "운동"
+            console.log(name, typeof name, hobby, typeof hobby);
+        }
+        console.log(name, typeof name, hobby, typeof hobby);
+    </script>
+</body>
+</html>

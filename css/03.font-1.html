@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폰트 관련 속성들</title>
+    <style>
+        p {
+            /* 폰트를 맑은 고딕으로 변경, 맑은 고딕 폰트가 없으면 sans-serif 폰트 사용 */
+            font-family: "맑은 고딕", sans-serif;
+            /* 폰트를 궁서로 변경, 궁서 폰트가 없으면 명조 계열 serif 폰트 사용 */
+            font-family: "궁서", serif;
+            /* 이렇게 되면 위에 폰트는 무시 */
+
+            font-size: 32px;
+            /* 기본 size : 16px */
+            font-weight: 900;
+            /* 기본 400, 100~900값 */
+            font-style: italic;
+            text-align: center;
+            /* block-level 태그 내에서 적용 */
+            text-decoration: underline; /* 밑줄 */
+            /* text-decoration: line-through; 취소선 */
+            /* text-decoration: none; 선 없애기 */
+            text-shadow: 5px 5px 1px gray;
+            /* x축 크기 / y축 크기 / 퍼짐정도(blur) / 색상 */
+        }
+
+        pre {
+            line-height: 32px;
+            /* 행 높이 : 세로 가운데 정렬에서 주로 활용 */
+            letter-spacing: -1px;
+            /* 글자 간격 */
+            /*Red Green Blue : 0~255, 0~255, 0~255 */
+            color: rgb(0, 0, 0);
+            /* 검정색 */
+            color: rgb(255, 255, 255);
+            /* 흰색 */
+            /* RGB : #RRGGBB 16진수표기법*/
+            color: #000000;
+            color: #FFFFFF;
+            color: rgba(0, 0, 0, 0.5);
+            /* alpha(투명도) : 0(투명) ~ 1(불투명) , 기본값 : 1 */
+        }
+        
+        a {
+             /* inline-level 태그에서는 가운데 정렬 불가 */
+            /* div 태그로 감싸서 정렬 */
+            text-align: center; 
+        }
+        h1 {
+            /* 
+                브라우저별로 글자의 외곽선 효과를 처리 (아직 표준화 전, 현재 추진중)
+                벤더프리픽스 : 속성 앞에 브라우저 지정
+                - webkit : 크롬, 사파리
+                - moz : 파이어폭스
+                - o : 오페라
+            */
+            -webkit-text-stroke-color: crimson;
+            -webkit-text-stroke-width: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Hello World!</p>
+    <pre>ㅎㅇㅎㅇㅎㅇ</pre>
+    <pre>좋은데?</pre>
+    <h1>나도</h1>
+    <div style="text-align: center;"><a>누구세용</a></div>
+</body>
+
+</html>

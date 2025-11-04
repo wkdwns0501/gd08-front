@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 3</title>
+    <style>
+        .wrap1 {
+            overflow: hidden;
+        }
+        .wrap1 > div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            float: left;
+        }
+        .wrap2 {
+            display: flex;
+            /* nowrap (기본값) : 한줄에 강제 배치 */
+            /* wrap : 화면 크기에 따라 다음줄로 이동 */
+            /* flex-wrap : nowrap; */
+            /* 배치방식 - row(기본값) : 행배치 */
+            flex-direction: row;
+            /* 배치방식 - column : 열배치 */
+            /* flex-direction: column;  */
+            /* 배치방식 - row-reverse : 역순으로 행배치 */
+            /* flex-direction: row-reverse; */
+            /* 배치방식 - column-reverse : 역순으로 열배치 */
+            /* flex-direction: column-reverse; */
+            /* flex-flow : 행 방향, 줄 바꿈 (wrap과 direction을 동시에) */
+            flex-flow: row wrap;
+            /* justify-content : 배치 정렬 - space-around (균등 배치), - flex-start (왼쪽 우선 배치)
+                                                        - flex-end (오른쪽 배치), - center (가운데 배치) */
+            justify-content: space-around;
+            /* justify-content: center; */
+            width: 600px;
+            height: 100px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap1">
+        <div>BOX1</div>
+        <div>BOX2</div>
+    </div>
+
+    <div class="wrap2">
+        <div>BOX1</div>
+        <div>BOX2</div>
+        <div>BOX3</div>
+        <div>BOX4</div>
+        <div>BOX5</div>
+    </div> 
+</body>
+</html>

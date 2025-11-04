@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 입출력 1</title>
+</head>
+<body>
+    <h2>데이터 입력 구문</h2>
+    <ul>      <!-- window 생략 가능 -->
+        <li>변수 = [window.]confirm("질문내용")</li>
+        <li>변수 = [window.]prompt("질문내용")</li>
+        <li>변수 = 특정요소.속성(id, className, innerHTML, innerText)</li>
+    </ul>
+    <button onclick="testConfirm();">confirm</button>
+    <div id="area"></div>
+    <script>
+        function testConfirm() {
+            let result = window.confirm("홍길동님이 맞으시면 확인 아니면 취소를 눌러주세요");
+            // 확인 버튼 클릭 : true 리턴
+            // 취소 버튼 클릭 : false 리턴
+            console.log(result);
+            // divEl = <div id="area"></div>
+            const divEl = window.document.getElementById("area");
+            if(result) {
+                // divEl 태그의 하위 HTML 데이터
+                divEl.innerHTML = "<h3>환영합니다 홍길동님</h3>"
+            }
+            else {
+                divEl.innerHTML = "<h3>홍길동님만 가능합니다</h3>"
+            }
+        }
+    </script>
+    <h3>window.prompt("질문 내용")</h3>
+    <p>
+        prompt 호출시 " 질문내용과 입력할 수 있는 텍스트 상자", 
+        "확인/취소" 버튼이 보여지는 브라우저의 알림창(대화창) 실행 <br>
+        확인버튼 클릭시 텍스트 상자에 입력된 값을 문자열로 반환 <br>
+        취소버튼 클릭시 null값 반환
+    </p>
+    <button onclick="testPrompt1()">prompt</button>
+    <div id="area2"></div>
+    <script>
+        function testPrompt1() {
+            let name = prompt("당신의 이름은 무엇입니까?");
+            let age = prompt("당신의 나이는 몇살입니까?");
+            const divEl = document.getElementById("area2");
+            divEl.innerHTML = "<b>" + age + "살, " + name + "님 반갑습니다.</b>";
+        }
+    </script>
+    <h2>데이터를 출력하는 구문</h2>
+    <ul>
+        <li>[window.]alert("브라우저의 확인창에 출력시킬 메세지")</li>
+        <li>[window.]console.log("브라우저의 콘솔창에 출력시킬 메세지")</li>
+        <li>document.write("브라우저의 화면에 출력 시킬 메세지")</li>
+        <li>태그.innerHTML = "태그 내부의 출력시킬 메세지</li>
+    </ul>
+    <div id="test"></div>
+    <script>
+        alert("브라우저의 확인창으로 메세지를 출력");
+        document.write("<hr>");
+        document.write("document.write() 함수를 이용하여 화면에 출력");
+        let test = document.getElementById("test");
+        test.innerHTML = "<table border='1'><tr><td>innerHTML을 이용하여 div 영역에 메세지를 출력합니다.</td></tr></table>";
+    </script>
+</body>
+</html>

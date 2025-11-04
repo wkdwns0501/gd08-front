@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 과제 1</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>고객정보</legend>
+            <div>
+                고객명 : <input type="text" name="userName" id="userName">
+            </div>
+            <div>
+                전화번호 : <input type="tel" name="phone" id="phone">
+            </div>
+            <div>
+                E-mail : <input type="email" name="email" id="email">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>피자 사이즈</legend>
+            <div>
+                <label for="Small">
+                    <input type="radio" name="size" value="Small" id="Small">Small
+                </label>
+            </div>
+            <div>
+                <label for="Medium">
+                    <input type="radio" name="size" value="Medium" id="Medium">Medium
+                </label>
+            </div>
+            <div>
+                <label for="Large">
+                    <input type="radio" name="size" value="Large" id="Large">Large
+                </label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>토핑 선택</legend>
+            <div>
+                <label for="t1">
+                    <input type="checkbox" name="topping" value="베이컨" id="t1">베이컨
+                </label>
+            </div>
+            <div>
+                <label for="t2">
+                    <input type="checkbox" name="topping" value="치즈" id="t2">치즈
+                </label>
+            </div>
+            <div>
+                <label for="t3">
+                    <input type="checkbox" name="topping" value="양파" id="t3">양파
+                </label>
+            </div>
+            <div>
+                <label for="t4">
+                    <input type="checkbox" name="topping" value="버섯" id="t4">버섯
+                </label>
+            </div>
+        </fieldset>
+        <div style="padding-top: 20px; padding-bottom: 20px;">희망 배송 시간 : <input type="time"></div>
+        <div>
+            <button type="submit">주문하기</button>
+        </div>
+    </form>
+</body>
+</html>

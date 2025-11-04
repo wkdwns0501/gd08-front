@@ -1,0 +1,191 @@
+header, nav, section, article, aside, footer, div {
+    display: block;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+.wrap {
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+/* header */
+.header {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.header_top {
+    height: 80%;
+    display: flex;
+}
+.header_logo, .header_alarm {
+    width: 20%;
+}
+.header_logo {
+    display: flex;
+    justify-content: center; /* 정렬 : 수평 가운데 정렬 */
+    align-items: center; /* 정렬 : 수직 가운데 정렬 */
+}
+.header_logo img {
+    width: 80%;
+    height: 60%;
+}
+.header_search {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search_form {
+    width: 70%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search_form > input {
+    width: 70%;
+    margin: 5px;
+}
+.search_form > button {
+    width: 10%;
+    margin: 5px;
+}
+.header_nav {
+    height: 20%;
+}
+.menu_wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.main_menu {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.main_menu > a {
+    font-size: 20px;
+    font-weight: bold;
+    color: orange;
+}
+.main_menu:hover > div {
+    display: block;
+}
+a {
+    text-decoration: none;
+}
+.sub_wrap {
+    position: absolute;
+    top: 37px;
+    width: 100%;
+    background-color: white;
+    display: none;
+}
+.sub_menu {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sub_menu > a {
+    color : pink;
+}
+/* section */
+.content_wrap {
+    min-height: 500px;
+    display: flex;
+}
+.content_news {
+    width: 70%;
+}
+.content_side {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.content_side_myinfo {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login_form {
+    width: 90%;
+    height: 70%;
+    display: flex;
+}
+.login_input_wrap {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.login_input_wrap > input {
+    height: 100%;
+}
+.login_btn {
+    width: 30%;
+}
+.login_btn > button {
+    width: 100%;
+    height: 100%;
+}
+.login_etc {
+    width: 90%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap : 10px /* flex에서 간격 띄어 주기 (margin 이랑 비슷) */
+}
+.login_etc a {
+    font-size: 12px;
+    color: black;
+}
+.content_side_ad {
+    height: 350px;
+}
+/* footer */
+.footer {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+.footer_link {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.footer_link > a {
+    color: black;
+    font-weight: bold;
+    margin: 15px;
+}
+.footer_info {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+.footer_info_company{
+    height: 80%;
+    list-style-type: "-";
+    padding-left: 20px;
+    margin-top: 5px;
+}
+.footer_info_company > li {
+    font-size: 12px;
+}
+.footer_info_copyright {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

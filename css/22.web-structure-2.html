@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면 구현</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="22.display.css">
+</head>
+<body>
+    <div class="wrap">
+        <header class="header">
+            <div class="header_top">
+                <div class="header_logo">
+                    <img src="../html/img/PC.png">
+                </div>
+            
+                <div class="header_search">
+                    <form action="search.do" class="search_form">
+                        <input type="search" name="keyword">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="header_alarm"></div>
+            </div>
+        <nav class="header_nav">
+            <div class="menu_wrap">
+                <div class="main_menu"><a href="">Java</a></div>
+                <div class="main_menu"><a href="">Oracle</a></div>
+                <div class="main_menu">
+                    <a href="">Java</a>
+                    <div class="sub_wrap">
+                        <div class="sub_menu"><a href="">HTML</a></div>
+                        <div class="sub_menu"><a href="">CSS</a></div>
+                        <div class="sub_menu"><a href="">JavaScript</a></div>
+                        <div class="sub_menu"><a href="">JQuery</a></div>
+                    </div>
+                </div>
+                <div class="main_menu">
+                    <a href="">Server</a>
+                        <div class="sub_wrap">
+                            <div class="sub_menu"><a href="">JDBC</a></div>
+                            <div class="sub_menu"><a href="">Servlet</a></div>
+                            <div class="sub_menu"><a href="">JSP</a></div>
+                            <div class="sub_menu"><a href="">Ajax</a></div>
+                        </div>
+                </div>
+                <div class="main_menu">
+                    <a href="">FrameWork</a>
+                    <div class="sub_wrap">
+                        <div class="sub_menu"><a href="">MyBatis</a></div>
+                        <div class="sub_menu"><a href="">Spring</a></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        </header>
+        <section class="content_wrap">
+            <div class="content_news"></div>
+                <div class="content_side">
+                    <div class="content_side_myinfo">
+                        <form action="login.me" class="login_form">
+                        <div class="login_input_wrap">
+                            <input type="text" name="userId" placeholder="아이디 입력" required>
+                            <input type="password" name="userPw" placeholder="비밀번호 입력" required>
+                        </div>
+                        <div class="login_btn">
+                            <button type="submit"><i class="fa-solid fa-right-to-bracket"></i></button>
+                        </div>
+                        </form>
+                    <div class="login_etc">
+                        <a href="">회원가입</a> | <a href="">ID/PW 찾기</a>
+                    </div>
+                </div>
+                <div class="content_side_ad"></div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer_link">
+                <a href="">이용약관</a> |
+                <a href="">개인정보취급방침</a> |
+                <a href="">인재채용</a> |
+                <a href="">고객센터</a>
+            </div>
+            <div class="footer_info">
+                <ul class="footer_info_company">
+                    <li> 상호명 : GooDee Academy</li>
+                    <li> 대표자 : 이승엽</li>
+                    <li> 전화 : 02-818-7950</li>
+                    <li> 개인정보책임자 : 주승재 / jsj@goodee.co.kr</li>
+                    <li> 본관 : (08505) 서울특별시 금천구 가산디지털2로 95 (가산동, KM타워) 2층, 3층</li>
+                </ul>
+            </div>
+            <div class="footer_info_copyright">
+                Copyright ⓒ GooDee Academy. All rights reserved.
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

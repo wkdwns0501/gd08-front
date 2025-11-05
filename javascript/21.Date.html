@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date 함수</title>
+    <style>
+        .area {
+            width: 500px;
+            height: 500px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="area"></div>
+    <script>
+        let box1 = document.querySelector("#box1");
+        let now = new Date(); // 현재 일시
+        box1.innerHTML += now + "<br>";
+        // 날짜 설정 : new Date(년, 월(0~11), 일, 시, 분, 초)
+        let date1 = new Date(2025, (10-1), 22, 15, 20, 0) // 2025-10-22 15:20
+        box1.innerHTML += date1 + "<br>";
+        // new Date(년, 월(0~11), 일)
+        let date2 = new Date(2025, (10-1), 22) // 2025-10-22
+        box1.innerHTML += date2 + "<br>";
+        // new Date("yyyy-MM-dd HH:mm:ss")
+        let date3 = new Date("2025-10-22 15:30:00") // 2025-10-22 15:30
+        box1.innerHTML += date3 + "<br>";
+         //Local 타임 기준
+        let year = now.getFullYear();       // 년도 : 2025
+        let month = now.getMonth();     // 월 : 10월 (9)
+        let day = now.getDate();            //일
+        let weekNo = now.getDay();       //요일 : 일(0) ~ 토(6)
+        let hour = now.getHours();         //시
+        let minute = now.getMinutes(); //분
+        let second = now.getSeconds(); //초
+        box1.innerHTML += 
+        `지역일시 : ${year},${month},${day},${weekNo},${hour},${minute},${second}<br>`;
+         //UTC 타임 기준
+        year = now.getUTCFullYear();       // 년도 : 2025
+        month = now.getUTCMonth();     // 월 : 10월 (9)
+        day = now.getUTCDate();            //일
+        weekNo = now.getUTCDay();       //요일 : 일(0) ~ 토(6)
+        hour = now.getUTCHours();         //시
+        minute = now.getUTCMinutes(); //분
+        second = now.getUTCSeconds(); //초
+        box1.innerHTML += 
+        `UTC일시 : ${year},${month},${day},${weekNo},${hour},${minute},${second}<br>`;
+        let week = ['일', '월', '화', '수', '목', '금', '토'];
+        let weekname = week[now.getDay()];
+        box1.innerHTML += `2025-10-22 ${weekname}요일 입니다`;
+    </script>
+</body>
+</html>

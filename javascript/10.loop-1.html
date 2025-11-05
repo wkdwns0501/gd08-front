@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문 - for, while, do while</title>
+</head>
+<body>
+    <!-- 
+        반복문 : 조건문의 결과가 참인 동안 반복 실행
+        - for 문
+            (1) for (초기값;조건식;증감식) {
+                반복될 문장들
+                }
+            (2) 실행 순서
+                1) 초기값
+                2) 조건식의 결과가 참 : 문장 실행
+                    조건식의 결과가 거짓 : 반복문 종료
+                3) 반복될 문장들
+                4) 증감식
+                5) 2번 조건식 실행 반복 여부 판단
+        - while 문
+            (1) while (조건식) {
+                반복될 문장들
+                }
+            (2) 실행 순서
+                1) 조건식의 결과가 참 : 문장 실행
+                    조건식의 결과가 거짓 : 반복문 종료
+                2) 반복될 문장들
+                3) 1번 조건식 실행
+        - do while 문
+            (1) do {
+                    반복될 문장들
+                } while (조건식)
+            (2) 실행 순서
+                1) 반복될 문장들
+                2) 조건식 실행, 결과가 참 : 1번 문장 실행
+                                        결과가 거짓 : 반복문 종료
+    -->
+    <h3>반복문 연습</h3>
+    for : <div id="box1"></div>
+    while : <div id="box2"></div>
+    do while : <div id="box3"></div>
+    <script>
+        let n = 0;
+        for(n =1 ; n <= 5 ; n++) {
+            document.querySelector("#box1").innerHTML += (n + "&nbsp;&nbsp;")
+        }
+        console.log("n = ",n)
+
+        n = 1;
+        while(n <= 5) {
+            document.querySelector("#box2").innerHTML += (n + "&nbsp;&nbsp;")
+            n++;
+        }
+        console.log("n = ",n)
+
+        n = 1;
+        do{
+            document.querySelector("#box3").innerHTML += (n + "&nbsp;&nbsp;")
+            n++
+        }while(n <= 5)
+        console.log("n = ",n)
+    </script>
+
+</body>
+</html>

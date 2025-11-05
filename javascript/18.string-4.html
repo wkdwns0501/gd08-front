@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 2</title>
+    <style>
+        .area {
+            width: 500px;
+            border: 1px solid gray;
+            overflow: auto;
+        }
+        .big {
+            height: 500px;
+        }
+        .small {
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <h1>문자열의 html 관련 메소드</h1>
+    <button onclick="stringHtmlTest();">문자열 html 메소드</button>
+    <div id="area" class="area small"></div>
+    <script>
+        function stringHtmlTest() {
+            const divEl = document .querySelector("#area");
+            let str = "javascript";
+            divEl.innerHTML = `str:${str} <br>`
+            divEl.innerHTML += `bold():${str.bold()} <br>`
+            divEl.innerHTML += `italics():${str.italics()} <br>`
+            divEl.innerHTML += `sub(),sup():${str.sub()} , ${str.sup()} <br>`
+            divEl.innerHTML += `link():${str.link("https://www.naver.com")} <br>`
+        }
+    </script>
+</body>
+</html>

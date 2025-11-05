@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규식 2</title>
+</head>
+<body>
+    <script>
+        const text1 = "Hello JavaScript, Hello Java";
+        const result1 = text1.match(/Java/); // 첫번째 Java만 조회
+        console.log(result1);
+
+        const text2 = "cat, bat, fat, mat";
+        const result2 = text2.match(/.at/g); // 모두 조회
+        console.log(result2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 실습 2</title>
+</head>
+<body>
+    <h1>기본 문법 문제</h1>
+    Q1. 다음 보기에 있는 텍스트 필드에 작성한 문자열의 길이를 출력
+    <fieldset>
+        <legend>보기</legend>
+        <input type="text" placeholder="글자 작성" size="100" id="text1">
+    </fieldset>
+    <br>
+    <button onclick="stringLength();">확인하기</button>
+    <div id="result1"></div>
+    <script>
+        function stringLength() {
+            let text = document.querySelector("#text1").value;
+            document.querySelector("#result1").innerHTML = `글자수 : ${text.length}`
+        }
+    </script>
+    <hr>
+    Q2. 다음 보기에 있는 문자열을 , 를 기준으로 잘라내어 하나하나 출력
+    <fieldset>
+        <legend>보기</legend>
+        <label id="la1">콜라,사이다,햄버거,피자,한약</label>
+    </fieldset>
+    <br>
+    <button onclick="stringSplit();">확인하기</button>
+    <div id="result2"></div>
+    <script>
+        function stringSplit() {
+            let str = document.querySelector("#la1").textContent;
+            let arr = str.split(",");
+            for (let i = 0; i < arr.length; i++) {
+                document.querySelector("#result2").innerHTML += `${arr[i]} <br>`
+            }
+        }
+    </script>
+</body>
+</html>

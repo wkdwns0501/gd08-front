@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 3</title>
+</head>
+<body>
+    <h2>Key 이벤트</h2>
+    <!-- 
+        - keydown : 키보드에서 키를 누를때 발생. 모든 키에서 이벤트 발생
+        - keypress : 키보드에서 키가 눌려 있는 상태. 펑션키, 기능키 등에서 이벤트 발생X
+        - keyup : 키가 올라올때 발생되는 이벤트. 모든 키에서 이벤트 발생
+    -->
+    <input type="text" id="userName">
+    <script>
+        document.querySelector("#userName").onkeyup = function(e) {
+            console.log(e); // Key 이벤트
+            console.log(this.value); // input 태그의 value
+            console.log(e.key); // 눌린 키값
+            console.log(e.keyCode); // 눌린 키값의 코드값 (아스키코드?)
+        }
+    </script>
+    <h2>태그별로 기본적인 이벤트 제거</h2>
+    <!-- 
+        - a 태그 : 클릭 시 href 속성에 작성된 url로 페이지가 이동하는 기본 이벤트가 존재
+        - form 태그의 submit 버튼 : submit 버튼 클릭 시, form 태그의 action 속성에 설정된 url로
+                                                입력 값들과 함께 요청되는 기본 이벤트가 존재
+        - 기본 이벤트의 실행을 막을 때는 return false를 이용함
+    -->
+    <a href="https://www.naver.com" onclick="alert('네이버 연결 실패'); return false">네이버로 이동</a>
+    <a href="https://www.google.com" onclick="return confirm('구글 페이지도 이동하실?')">구글로 이동</a>
+    <br><br>
+    <hr>
+    <form action="25.event-2.html" method="get">
+        아이디 : <input type="text" id="userId" name="userId" required><br>
+        비밀번호 : <input type="password" id="userPw" name="userPw" required><br>
+        <input type="submit" value="전송" onclick="return validate();">
+    </form>
+    <script>
+        function validate() {
+            // 아이디 유효성 검사 :영문자 또는 숫자로만 5글자 이상 12글자 이하가능
+            // 형식에 맞지 않는 경우 -> 알림창 출력. 기본 이벤트 막기
+            // 형식에 맞는 경우 -> 기본 이벤트 25.event-2.html로 페이지 이동
+            const userId = document.querySelector("#userId").value;
+            /* if (userId.length >= 5 && userId.length <= 12) { //아이디길이 만족
+                for (let i=0;i<userId.length;i++) {
+                    if(userId.charAt(i) >= '0' && userId.charAt(i) <='9'   //숫자
+                      || userId.charAt(i) >= 'A' && userId.charAt(i) <='Z' //대문자 
+                      || userId.charAt(i) >= 'a' && userId.charAt(i) <= 'z' ) { //소문자
+
+                    } else {
+                        alert("아이디는 숫자 또는 영문자만 가능합니다.")
+                        return false;
+                    }
+                }
+            } else {
+                alert("아이디는 5자이상 12자 이하만 가능합니다.")
+                return false;
+            } */
+            
+            // 정규식 : 숫자, 문자 등을 판단할 수 있는 기능
+            /* 
+                /^[a-z0-9]{5,12}$/i
+                - [a-z0-9] : 소문자, 숫자 한개
+                - {5,12} : 5개 이상 12개 이하
+                - ^ : 시작 문자
+                - $ : 종료 문자
+                - i : 대소문자 구분없이
+            */
+            const regExp = /^[a-z0-9]{5,12}$/i; // =/^[a-zA-Z0-9]{5,12}$/
+            if (!regExp.test(userId)) { // 정규표현식과 일치하지 않으면
+                alert("유효한 아이디의 형식이 아닙니다. 다시 입력해주세요.")
+                document.getElementById("userId").select(); // 내용들 선택
+                return false; // submit 기본이벤트 취소 
+            } 
+        }
+
+    </script>
+</body>
+</html>

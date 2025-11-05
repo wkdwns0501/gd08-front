@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수</title>
+    <style>
+        .area {
+            border: 1px solid gray;
+            width: 500px;
+            height: 200px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>선언 함수</h1>
+    <button onclick="test1();">실행 확인</button>
+    <div class="area" id="area1"></div>
+    <script>
+        /* 
+            1. 선언 함수
+                - 함수의 이름이 있다
+                - 함수의 정의와 호출로 구분
+        */
+        function test1() {
+            document.getElementById("area1").innerHTML = "test1 함수 호출됨<br>"
+        }
+    </script>
+    <h3>익명 함수 : 이름이 없는 함수</h3>
+    <pre>
+        변수 | 속성 = function([매개변수,...]){
+            함수 호출시 실행할 소스 코드들;
+        }
+        특정 변수나 속성에 대입된 함수 구현시 주로 사용
+        주로 이벤트 핸들러 작성시 많이 사용
+    </pre>
+    <!-- 
+        2. 익명 함수
+            - 이름 없는 함수
+            - 이벤트 처리용으로 변수에 익명함수를 저장해서 사용
+            - 호이스팅 대상이 아님
+            - 함수 정의
+                1) 일반 익명 함수
+                    let val1 = function([매개변수,...]) {...}
+                2) 화살표(=>) 함수
+                    let val1 = ([매개변수,...])=> {...}
+    -->
+    <button id="btn">실행 확인</button>
+    <div class="area" id="area2"></div>
+    <script>
+        // document.querySelector("#btn").onclick = function() {
+        //     document.querySelector("#area2").innerHTML = "익명의 함수로 이벤트 핸들러 구현"
+        // }
+        document.querySelector("#btn").onclick = (e) => {
+            document.querySelector("#area2").innerHTML = "익명의 함수로 이벤트핸들러 구현 "
+        }
+    </script>
+    <h2><!-- 3. --> 함수의 매개변수</h2>
+    <button onclick="test2('안녕하세요');">실행확인 1</button>
+    <button onclick="test2(10);">실행확인 2</button>
+    <button onclick="test2([10,20,30]);">실행확인 3</button>
+    <!-- 정의된 매개변수의 개수보다 전달된 인자값이 많은 경우 오류발생X -->
+    <button onclick="test2('안녕하세요', '홍길동입니다.');">실행확인 4</button>
+    <!-- 
+        - 정의된 매개변수 개수보다 전달된 인자값이 적은 경우 오류발생X
+        - 매개변수가 초기화 되지않음 (undefined) 
+    -->
+    <button onclick="test2();">실행확인 5</button>
+    <div class="area" id="area3"></div>
+    <script>
+        function test2(value) {
+            // arguments : 매개변수 목록
+            console.log(arguments);
+            document.querySelector("#area3").innerHTML = arguments[0] + "<br>";
+            document.querySelector("#area3").innerHTML += arguments[1] + "<br>";
+            document.querySelector("#area3").innerHTML += value + "<br>";
+        }
+    </script>
+    <h2>함수의 리턴</h2>
+    <button onclick="alert(random());">클릭</button>
+        <script>
+            function random() {
+                // 1 ~ 100 사이의 랜덤값 리턴
+                return parseInt(Math.random() * 100 + 1);
+            }
+            /* 
+                4. 반환
+                - 반환 타입의 선언이 없음. 자료형에 상관없이 반환 가능
+                - return 키워드(예약어)로 함수 종료. 함수의 끝(})을 실행하면 함수종료
+                - 값을 반환하는 경우 : return 필수
+                    1) return 값;
+                    2) return 리턴이 있는 함수();
+            */
+        </script>
+        <script>
+            /* 
+                5. 자기 호출 함수
+                    - 함수의 정의와 호출을 합친 상태
+                    - 함수를 정의하고, 바로 호출될 수 있도록 구성
+                    - 일반 익명 함수의 정의와 호출로 가능
+                    - 화살표 함수의 정의와 호출로 가능
+            */
+            // 일반 익명 함수 정의하고 호출
+            (function() {
+                console.log("Hello World");
+            }) ();
+            // 화살표 함수 정의하고 호출
+            (() => {
+                console.log("Hello World");
+            })();
+            // 배열로 정의하기
+            let arr = [function(){console.log("안녕")},
+                            function(){console.log("홍길동")}];
+            (arr[0])();
+            (arr[1])();
+        </script>
+        <script>
+            /* 
+                6. 콜백 함수 (callback function) 
+                    - 인수로 전달된 함수
+                    - 어떤 함수를 다른 함수의 인수로 전달
+                    - 함수에서 다른 함수를 호출할 때 
+            */
+            function info(d1,d2) {
+                console.log(d1,d2);
+            }
+            function func1(d1,d2,func) {
+                func(d1,d2);
+            }
+            //func1 함수에서 info 함수를 호출 / info함수 : 콜백 함수
+            func1("안녕1", "홍길동1", info);
+            // 이때의 info()는 콜백함수X
+            info("안녕2", "홍길동2");
+            // 익명 함수를 이용하여 콜백함수 정의 (이런 방식으로 더 많이씀)
+            func1("안녕3", "홍길동3",function(d1,d2){
+                console.log("1:",d1);
+                console.log("2:",d2);
+            })
+            // 화살표 함수를 이용하여 콜백함수 정의
+            func1("안녕3", "홍길동3",(d1,d2) => {
+                console.log("1:",d1);
+                console.log("2:",d2);
+            })
+        </script>
+</body>
+</html>

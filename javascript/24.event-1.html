@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 1</title>
+    <style>
+        .area {
+            background-color: lightgray;
+            border: 1px solid black;
+            width: 500px;
+            height: 100px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트(event)</h1>
+    <h3>기본이벤트</h3>
+    <p>
+        특정 요소 객체의 이벤트 속성에 접근 후 이벤트 핸들러 연결 방식
+    </p>
+    <button id="btn1">실행 1</button>
+    <button id="btn2">실행 2</button>
+    <div id="area1" class="area"></div>
+    <script>
+        const area1 = document.querySelector("#area1");
+        document.querySelector("#btn1").onclick = function(){
+            area1.innerHTML += "btn1 버튼이 클릭되었습니다.<br>"
+        }
+        document.querySelector("#btn2").onclick = function(){
+            area1.innerHTML += "btn2 버튼이 클릭되어 btn1의 이벤트 제거.<br>"
+            document.querySelector("#btn1").onclick = null; //onclick 이벤트를 완전 삭제
+        }
+    </script>
+    <h3>인라인 방식</h3>
+    <p> <!-- 사용을 권장하지 않음 -->
+        요소 내부에 직접 이벤트 속성을 정의
+    </p>
+    <button onclick="document.querySelector('#area2').innerHTML +='버튼 1 클릭<br>'">실행 1</button>
+    <button onclick="test1();">실행 2</button>
+    <div id="area2" class="area"></div>
+    <script>
+        function test1() {
+            document.querySelector("#area2").innerHTML += "버튼 2 클릭<br>"
+        }
+    </script>
+    <h3>표준 이벤트 모델(addEventListener)</h3>
+    <p>w3c에서 공식적으로 지정한 이벤트 모델</p>
+    <button id="btn3">실행</button>
+    <script>
+        const btn3 = document.querySelector("#btn3");
+        btn3.addEventListener('click', function(){
+            alert("표준 이벤트 모델 테스트")
+        })
+        btn3.addEventListener('mouseenter', function(){
+            btn3.style.backgroundColor = "aqua";
+        })
+        btn3.addEventListener('mouseout', function(){
+            btn3.style.backgroundColor = null;
+        })
+    </script>
+    <h2>이벤트가 발생한 요소에 접근하는 방법</h2>
+    <button id="btn4" class="btn">기본 이벤트 방식</button>
+    <button id="btn5" class="btn">표준 이벤트 방식</button>
+    <button onclick="test2();">인라인 이벤트 방식1</button>
+    <button onclick="test3(this);">인라인 이벤트 방식2</button>
+    <button onclick="test3(this);">인라인 이벤트 방식3</button>
+    <script>
+        /* 
+            window.event.target : 3가지 방식 전부 이벤트 발생 요소 의미
+            this : 기본, 표준 이벤트 방식 -> 이벤트 발생 요소
+                    인라인 방식 -> window 객체
+            e 매개변수(기본, 표준 이벤트 방식) : e.target -> 이벤트 발생 요소
+        */
+        function test2(){
+            console.log("window.event.target : ", window.event.target);
+            window.event.target.innerHTML = "버튼 변경"
+            console.log("this : ", this); // window 객체
+        }
+        function test3(btn){
+            // btn : 이벤트 소스
+            btn.innerHTML = "버튼변경2";
+            btn.style.backgroundColor = "aqua";
+        }
+        document.querySelector("#btn4").onclick = function(e){
+            // e : 이벤트 객체 (Event Object) - 발생한 이벤트의 모든 정보(유형, 좌표, 대상 등)를 담은(저장하고 있는) 객체
+            // e.target	: 이벤트 소스 - 이벤트가 실제 시작된(클릭된) 최하위 DOM 요소
+            // this : 핸들러가 바인딩된 요소 - 함수가 선언된 방식과 호출된 방식에 따라 다름. 보통 이벤트 리스너가 걸려있는 요소를 가리킴
+            // window.event	: 전역 이벤트 객체 - 현재 처리 중인 이벤트 객체를 반환
+            // window.event.target : 이벤트 소스 (전역 객체 버전) - e.target과 동일하게 이벤트가 시작된 요소를 가리킴
+            // 실무에서는 상위 3개를 제일 많이 쓴다
+            console.log(e);
+            console.log("e.target : ", e.target); //이벤트 소스 (이벤트가 발생된 객체)
+            console.log("window.event : ", window.event);
+            console.log("window.event.target : ", window.event.target);
+            console.log("this : ", this); //이벤트 소스 (이벤트가 발생된 객체)
+            e.target.innerHTML = "버튼이 클릭됨"
+            window.event.target.style.backgroundColor = "aqua";
+            this.style.color = "blue";
+        }
+        document.querySelector("#btn5").addEventListener("click",function(e){
+            console.log("e.target : ", e.target); //이벤트 소스 (이벤트가 발생된 객체)
+            console.log("window.event.target : ", window.event.target);
+            console.log("this : ", this); //이벤트 소스 (이벤트가 발생된 객체)
+        })
+        // let btn = document.querySelectorAll(".btn");
+        // btn.addEventListener('click',function(e){
+        //     e.target.style.backgroundColor = "yellow";
+        // })
+    </script>
+</body>
+</html>

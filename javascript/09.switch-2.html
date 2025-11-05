@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문 - switch 2</title>
+</head>
+<body>
+    <h2>간이 계산기 만들기</h2>
+
+    첫번째 값 : <input type="number" id="num1"><br>
+    두번째 값 : <input type="number" id="num2"><br>
+
+    <input type="button" value="+" onclick="calculator(this.value);">
+    <input type="button" value="-" onclick="calculator(this.value);">
+    <input type="button" value="x" onclick="calculator(this.value);">
+    <input type="button" value="/" onclick="calculator(this.value);">
+    <input type="button" value="%" onclick="calculator(this.value);"> <br><br>
+    계산결과 : <span id="result"></span>
+
+    <script>
+        function calculator(value) {
+            const num1 = Number(document.getElementById("num1").value);
+            const num2 = Number(document.getElementById("num2").value);
+            let result = 0;
+            //자바형식의 switch 구문
+            switch(value) {
+                case "+" : result = num1 + num2; break;
+                case "-" : result = num1 - num2; break;
+                case "x" : result = num1 * num2; break;
+                case "/" : result = num1 / num2; break;
+                case "%" : result = num1 % num2; break;
+            }
+            document.getElementById("result").innerHTML = result;
+        }
+    </script>
+</body>
+</html>

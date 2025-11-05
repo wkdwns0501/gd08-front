@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 2</title>
+</head>
+<body>
+    <p>
+        select 태그를 선택하여 value의 값의 이미지로 변경하기
+    </p>
+    <form name="f">
+        <table>
+            <tr>
+                <td>
+                    <select name="s" onchange="drawimg()">
+                        <option value="strawberry.gif">딸기</option>
+                        <option value="banana.jpg">바나나</option>
+                        <option value="apple.gif">사과</option>
+                    </select>
+                </td>
+                <td>
+                    <img name="img2" src="img/strawberry.gif" width="100px">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function drawimg() {
+            // querySelector 버전
+            // img[name=img2] : img 태그 중 name 속성값이 img2인 태그
+            // let img = document.querySelector("img[name=img2]");
+            // let sel = document.querySelector("select[name=s]");
+            // img.src = "img/" + sel.value;
+
+            // getElementsByTagName 버전
+            // let img = document.getElementsByTagName("img")[0];
+            // let sel = document.getElementsByTagName("select")[0];
+            // img.src = "img/" + sel.value;
+
+            // getElementsByName 버전
+            // let img = document.getElementsByName("img2")[0];
+            // let sel = document.getElementsByName("s")[0];
+            // img.src = "img/" + sel.value;
+
+            // name 속성 활용
+            // 문서내에 name=img2인 태그 선택
+            let img = document.img2;
+            // 문서내에 이름이 f인 태그의 하위태그 중 이름이 s인 태그 선택
+                //select 나 input 등 은 form이 있어야 선택 가능
+            let sel = document.f.s;
+            img.src = "img/" + sel.value;
+
+        }
+    </script>
+</body>
+</html>

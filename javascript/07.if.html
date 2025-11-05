@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문 - if</title>
+</head>
+<body>
+    <div>
+        <div>국어점수 <span id="kor">81</span></div>
+        <div>영어점수 <span id="eng">93</span></div>
+        <div>수학점수 <span id="math">100</span></div>
+    </div>
+    <div>
+        <div>평균점수 <span id="average"></span></div>
+        <div>학점 <span id="grade"></span></div>
+        <div id="pass"></div>
+    </div>
+    <script>
+        //id = kor인 태그 객체의 하위 문자열
+        let kor = document.querySelector("#kor").textContent;
+        //id = eng인 태그 객체의 하위 문자열
+        let eng = document.querySelector("#eng").textContent;
+        //id = math인 태그 객체의 하위 문자열
+        let math = document.querySelector("#math").textContent;
+        let average = (Number(kor) + Number(eng) + Number(math)) / 3;
+        document.querySelector("#average").textContent = average;
+        let grade;
+        //평균이 60 이상인 경우 #pass에 "학점 취득", 미만이면 "재수강 요망" 출력
+        if (average >= 60) {
+            document.querySelector("#pass").textContent = "학점 취득";
+        } 
+        else{
+            document.querySelector("#pass").textContent = "재수강 요망"
+        }
+
+        if (average >= 90) {
+            grade = 'A';
+        }
+        else if (average >= 80) {
+            grade = 'B';
+        }
+        else if (average >= 70) {
+            grade = 'C';
+        }
+        else if (average >= 60) {
+            grade = 'D';
+        }
+        else {
+            grade = 'F';
+        }
+        document.querySelector("#grade").textContent = grade;
+    </script>
+    <p>
+        두개의 수를 입력받아서 두 수의 합이 짝수인 경우 "짝수", 홀수인 경우 "홀수" 를 #result에 출력
+    </p>
+    <input type="text" id="num1"> + <input type="text" id="num2"> = <input type="text" id="add">
+    <button type="button" onclick="calc()">계산하기</button>
+    <div id="result"></div>
+    <script>
+        function calc() {
+            let n1 = document.querySelector("#num1").value;
+            let n2 = document.querySelector("#num2").value;
+            let add = Number(n1) +Number(n2);
+            document.querySelector("#add").value = add;
+            if (add % 2 == 0){
+                document.querySelector("#result").innerHTML = "짝수";
+            }
+            else {
+                document.querySelector("#result").innerHTML ="홀수";
+            }
+        }
+        /* 
+            이전 버전 
+            document.getElementById("아이디속성값") : id="아이디속성값" 태그 선택
+            document.getElementsTagName("태그명") : <태그>인 태그들 선택
+            document.getElementsByClassName("class속성값") : class="속성값"인 태그들 선택
+            document.getElementsByName("name속성값") : name="속성값"인 태그들 선택
+            ES6 이후
+            document.querySelector("선택자") : 태그 선택
+                선택자 : 태그
+                            .class 속성값
+                            #id 속성값
+            document.querySelectorAll("선택자") : 태그들 선택
+        */
+    </script>
+</body>
+</html>

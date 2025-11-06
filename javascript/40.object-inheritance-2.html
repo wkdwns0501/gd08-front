@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 상속 2</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            constructor(name) { // 생성자
+                this.name = name;
+                this.cry = function(){}
+            }
+        }
+        class Dog extends Animal {
+            constructor(name) { // 생성자
+                super(name); // 부모의 생성자 호출
+                this.cry = function () {
+                    document.write(this.name + " : 멍멍<br>");
+                }
+            }
+        }
+        class Cat extends Animal {
+            constructor(name) { // 생성자
+                super(name); // 부모의 생성자 호출
+                this.cry = function() {
+                    document.write(this.name + " : 야옹<br>");
+                }
+            }
+        }
+        let dog = new Dog("강아지");
+        let cat = new Cat("고양이");
+        dog.cry();
+        cat.cry();
+    </script>
+</body>
+</html>

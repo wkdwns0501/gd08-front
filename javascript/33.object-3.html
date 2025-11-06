@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 3</title>
+    <style>
+        .area { 
+            border : 1px solid gray;
+            width: 400px;
+        }
+        .big {
+            height: 400px;
+        }
+        .small {
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="test1();">확인1</button>
+    <div class="area big" id="area1"></div>
+    <script>
+        /* 
+            생성자 함수
+            1. 객체를 만드는 함수
+            2. 관례상 첫 글자를 대문자로 작성함
+            3. 함수 정의
+                function 함수명(매개변수,...) {
+                    this.속성 = 매개변수;
+                    ...
+                }
+            4. 함수 호출
+                let 객체 = new 함수명(인수...)
+        */
+        // 생성자 함수
+        function Product(code, name, price) {
+            this.code = code; // 속성명 : code
+            this.name = name;
+            this.price = price;
+        }
+        //product1 : 객체
+        let product1 = new Product('A1000', '홈런볼', 1000);
+        let product2 = new Product('A1001', '맛동산', 1000);
+        console.log(product1);
+        console.log(product2);
+        function test1() {
+            const divEl = document.querySelector("#area1");
+            divEl.innerHTML = "<ul>"
+            for (let p in product1) {
+                divEl.innerHTML += "<li>" + p + " : " + product1[p] + "</li>";
+            }
+            divEl.innerHTML += "</ul>"
+            divEl.innerHTML += "<hr>"
+            divEl.innerHTML += "<ul>"
+            for (let p in product2) {
+                divEl.innerHTML += "<li>" + p + " : " + product2[p] + "</li>";
+            }
+            divEl.innerHTML += "</ul>"
+        }
+    </script>
+    <!-- 
+        프로토타입 (prototype)
+        - 객체들이 공유하는 하나의 메모리 공간을 의미
+        - 공통 데이터 (값, 함수 등) 를 프로토타입에 저장해서 메모리 공간을 효율적으로 사용 가능
+        - 보통 변수는 생성자 함수 내부에 선언하고 함수는 외부에 선언
+        - 사용 방법
+            1) 생성자 함수 내부
+                this.__proto__.속성 = 값 또는 함수
+                (__proto__ 생략 가능)
+            2) 생성자 함수 외부
+                this.prototype.속성 = 값 또는 함수
+    -->
+    <script>
+        function Korean(name) {
+            this.name = name;
+            this.nation = 'South Korea';
+            this.capital = 'Seoul';
+            this.test = function(){
+                console.log('프로토타입 함수')
+            }
+        }
+        let person1 = new Korean("홍길동");
+        let person2 = new Korean("김삿갓");
+        console.log(person1);
+        console.log(person2);
+    </script>
+    <button onclick="test2();">확인2</button>
+    <div class="area big" id="area2"></div>
+    <script>
+        function test2() {
+            const divEl = document.querySelector("#area2");
+            divEl.innerHTML = "<ul>"
+            for (let p in person1) {
+                divEl.innerHTML += "<li>" + p + " : " + person1[p] + "</li>";
+            }
+            divEl.innerHTML += "</ul>"
+            person1.test(); // 함수 호출
+        }
+    </script>
+    <script>
+        // 생성자 함수의 외부에서 프로토타입 설정하기
+        function American(name) {
+            this.name = name;
+        }
+        American.prototype.nation="United State";
+        American.prototype.capital="Washington DC";
+        American.prototype.test = function() {
+            console.log('외부에서 프로토타입 설정');
+            console.log(this.name, this.nation, this.capital);
+        }
+        let person3 = new American("마이클");
+        let person4 = new American("제시카");
+        console.log(person3);
+        console.log(person4);
+        person3.test();
+        person4.test();
+    </script>
+    <button onclick="test3();">확인 3</button>
+    <div class="area big" id="area3"></div>
+    <script>
+        function test3() {
+            const divEl = document.querySelector("#area3");
+            divEl.innerHTML = "<ul>"
+            for (let p in person3) {
+                divEl.innerHTML += "<li>" + p + " : " + person3[p] + "</li>";
+            }
+            divEl.innerHTML += "</ul>"
+            person3.test(); // 함수 호출
+        }
+    </script>
+</body>
+</html>

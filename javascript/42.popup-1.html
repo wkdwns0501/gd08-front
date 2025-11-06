@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업 1</title>
+</head>
+<body>
+    <input type="button" id="btn_open" value="창열기">
+    <input type="button" id="btn_close" value="창닫기">
+    <div id="area1"></div>
+    <script>
+        let nwin; // 전역 변수
+        document.querySelector('#btn_open').addEventListener("click",()=>{
+            let width = 480;
+            let height = 360;
+            // console.log("화면너비:" + screen.width);
+            // console.log("화면높이:" + screen.height);
+            // console.log("실제너비:" + screen.availWidth);
+            // console.log("실제높이:" + screen.availHeight);
+            let left = (screen.width - width) / 2;
+            let top = (screen.height - height) / 2;
+            let feature = `width=${width}, height=${height}, left=${left}, top=${top}`;
+            /* 
+                새 창 띄우기
+                - window.open("새 창의 url",이름, 옵션)
+                    - width, height : 새 창의 크기
+                    - left, top : 위치. 0,0 
+            */
+           // nwin : 새 창의 window 객체
+            nwin = window.open("43.popup-2.html",' ',feature);
+            // nwin = window.open("43.popup-2.html",' ',' ');
+        })
+        document.querySelector("#btn_close").addEventListener("click",()=>{
+            document.querySelector("#area1").innerHTML = "새 창 닫기";
+            nwin.close();
+        })
+    </script>
+</body>
+</html>

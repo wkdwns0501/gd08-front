@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>팝업 2</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .img {
+            width: 480px;
+            height: 317px;
+            background-image: url('img/apple.gif');
+            background-size: 480px 317px;
+        }
+        .footer { 
+            width: 480px;
+            height: 36px;
+            text-align: right;
+            line-height: 36px;
+        }
+    </style>
+</head>
+<body>
+    <div class="img"></div>
+    <div class="footer">
+        <input type="button" id="btn_close" value="닫기">
+    </div>
+    <script>
+        document.querySelector("#btn_close").addEventListener("click", ()=>{
+            // 42.popup.html 의 area1 영역에 open 페이지에서 자체 close 메세지 출력
+            // opener : 현재 페이지를 open한 페이지의 window 객체
+            opener.document.querySelector("#area1").innerHTML = "open 페이지에서 close";
+            // 모두 현재 창 닫기
+            // self.close(); // self 내 객체
+            // window.close(); // window 생략 가능
+            close();
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>타자 연습 게임</title>
+    <style>
+        div {
+            position: absolute;
+        }
+        #main { 
+            width: 450px;
+            height: 400px;
+            border: 1px solid blue;
+            overflow: hidden;
+        }
+        input {
+            position: absolute;
+            top: 410px;
+            left: 10px;
+            size: 200px;
+        }
+        #scorearea {
+            position: absolute;
+            top: 410px;
+            left: 210px;
+            border: 1px solid black;
+            width: 200px;
+            height: 20px;
+        }
+        #score {
+            position: relative;
+            left: 30px;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+    <div id="main"></div> <!-- 단어 표시 영역 -->
+    <div style="width: 400px;">
+        <!-- 
+            단어 입력 공간
+            onchange : value 값이 변경될 때 발생되는 이벤트, 엔터 입력 (checkbox, select ...)
+        -->
+        <input type="text" onchange="deleteMode(this.value)" id="input">
+        <div id="scorearea">점수 : <div id="score"></div></div></div>
+    </div>
+    <script>
+        let datas = [ // 2차원 배열
+            ["태연", "유리", "윤아", "효연", "수영", "서현", "티파니", "써니", "제시카"],
+            ["정국", "뷔", "지민", "슈가", "진", "알엠", "제이홉"],
+            ["미나", "나연", "다현", "지효", "모모", "채영", "쯔위", "사나", "정연"]
+        ];
+        let cnt = 0;
+        let words = []; // 화면에 출력되는 단어 저장한 배열
+        let colors = ['red', 'blue', 'green', 'grey', 'orange', 'black', 'pink'];
+        let canvasWidth = 400;
+        let canvasHeight = 400;
+        // 화면이 준비가 되면
+        window.onload = function () {
+            cm = setInterval(createMode, 2000); // 2초에 한번씩 함수 호출 (데이터 추가)
+            mm = setInterval(moveMode, 2000); // 2초에 한번씩 함수 호출 (단어 이동)
+        }
+        function MovingChar() { // 생성자 함수
+            this.h3 = document.createElement("h3"); // <h3></h3>
+            this.h3.innerHTML = randomData(); // datas 배열에서 한 단어 리턴
+            this.x = random(canvasWidth); // 랜덤으로 가로 위치 설정
+            this.y = 0;                              // 세로 위치  0으로 설정
+            this.vY = 10;                           // 세로 위치 이동 간격
+            this.h3.style.position = "absolute";
+            this.h3.style.left = this.x + "px";
+            this.h3.style.color = colors[random(colors.length)];
+            document.querySelector("#main").appendChild(this.h3);
+        }
+        // MovingChar 의 멤버 함수 move()
+        MovingChar.prototype.move = function () {
+            // 가로의 위치 보정
+            if ((this.x + this.h3.innerHTML.length) > canvasWidth) {
+                this.x = canvasWidth - (this.h3.innerHTML.length + 1);
+            }
+            this.y += this.vY; // 세로 위치 설정
+            this.h3.style.top = this.y + 'px'; // 세로 위치 이동
+        };
+        MovingChar.prototype.remove = function () {
+            document.querySelector("#main").removeChild(this.h3);
+        };
+        function createMode() { // 2초에 한번씩 호출
+            words.push(new MovingChar()); // 배열에 추가
+        }
+        function moveMode() { // 2초에 한번씪 호출
+            for (let i in words) {
+                // words[i].MovingChar 객체 1개
+                words[i].move(); // 세로 위치 이동
+                if (words[i].y >= canvasHeight - 30) { // 바닥에 단어가 닿으면 - 게임 종료
+                    document.querySelector("#main").removeChild(words[i].h3);
+                    delete (words[i]); // 배열에서 삭제
+                    clearInterval(cm); // 단어 추가 종료
+                    clearInterval(mm); // 단어 이동 종료
+                    for (let j in words) {
+                        words[j].h3.style.color = "gray"; // 단어 색을 회색으로 변경
+                    }
+                    alert("게임 종료!");
+                }
+            }
+        }
+        function random(num) {
+            let num1 = Math.random() * num;
+            num1 = parseInt(num1);
+            return num1; // 0 ~ num-1 사이의 임의의 정수
+        }
+        function randomData() { // 데이터 추가시 데이터 선택
+            let num1 = Math.random() * 3;
+            num1 = parseInt(num1); // 소녀시대, BTS, 트와이스 중 ㅎ나개 선택
+            let num2 = Math.random() * datas[num1].length;
+            num2 = parseInt(num2);
+            return datas[num1][num2];
+        }
+        function deleteMode(str) { // 입력값을 화면에서 해당 이름 제거
+            // str : 입력한 데이터
+            for (let i in words) {
+                words[i].move();
+                if (words[i].h3.innerHTML == str) {
+                    document.querySelector("#main").removeChild(words[i].h3); // 제거
+                    delete (words[i]); // 배열 제거
+                    score.innerHTML = ++cnt; // 점수 증가
+                }
+            }
+            // 다음 입력 준비 초기화
+            document.querySelector("#input").value = ""; // 입력 칸을 초기화
+            document.querySelector("#input").focus(); // 입력 칸에 focus 유지
+        }
+    </script>
+</body>
+</html>

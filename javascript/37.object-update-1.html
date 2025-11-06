@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기존 객체 변경 1</title>
+</head>
+<body>
+    <script>
+        const a = 10;
+        document.write(a, typeof a, "<br>");
+        //Number 객체에 power() 함수 추가
+        Number.prototype.power = function(n=1){
+            return this.valueOf() ** n;          // n=1 : default 매개변수값 (인자가 없다면 1)
+        }
+        document.write("a.power() : " + a.power(), "<br>"); 
+        document.write("a.power(2) : " + a.power(2), "<br>"); 
+        document.write("a.power(3) : " + a.power(3), "<br>"); 
+        // String 객체에 contain 함수 추가
+        String.prototype.contain = function(data){
+            return this.indexOf(data) >= 0;
+        }
+        document.write("'abc'.contain('a') : " + "abc".contain("a"),"<br>");
+        document.write("'abc'.contain('e') : " + "abc".contain("e"),"<br>");
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자 잡기 게임</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 랜덤 초기 위치 설정 함수
+        // 0~limit 까지의 임의의 정수 리턴
+        function nextRandomInteger(limit) {
+            return Math.round(Math.random() * limit); 
+        }
+        // 임의의 속도 생성 함수
+        // 2 : -2 ~ 2 정도사이의 임의의 수
+        // -maxSpeed < 값 < maxSpeed
+        function randomSpeed(maxSpeed) { 
+            return Math.random() * maxSpeed - Math.random() * maxSpeed;
+        }
+        let canvasWidth = 700; // 글자의 이동 가능한 가로크기
+        let canvasHeight = 500; // 글자의 이동 가능한 세로크기
+        let total = 10; // 돌아다니는 글자의 수
+
+        // 생성자 함수
+        function MovingText() {
+            // 글자의 초기위치
+            // 0 ~700 사이의 임의의 정수, x축의 시작 위치
+            this.x = nextRandomInteger(canvasWidth);
+            // 0 ~500 사이의 임의의 정수, y축의 시작 위치
+            this.y = nextRandomInteger(canvasHeight);
+            // 위치 변경 값
+            this.vX = randomSpeed(2); // -2 ~ 2 정도의 임의의 값 ,이동속도 제어
+            this.vY = randomSpeed(2); // -2 ~ 2 정도의 임의의 값
+            // 이동하는 텍스트
+            this.body = document.createElement("h1"); // <h1></h1>
+            this.body.innerHTML = "A";  // <h1>A</h1>
+            // setAttribute : 속성 등록
+            this.body.setAttribute("style", "background-color:white");
+            this.body.style.position = "absolute"; // 절대 경로
+            // 이동하는 텍스트 클릭 이벤트 설정
+            let text = this.body;
+            this.body.onclick = function() { // this.body : <h1>A</h1> 
+                if (text.innerHTML == 'B') return;
+                --total; // 차감
+                alert("남은 문자 수 : " + total);
+                text.innerHTML = "B";
+            }
+            document.body.appendChild(this.body); // 화면에 추가
+        }
+
+        // 멤버 함수를 외부에서 설정
+        MovingText.prototype.move = function() {
+            if (this.body.innerHTML == 'B') return; //잡힌 글자, 움직임 없음
+            // 가로 범위를 이탈하는 경우 이동 방향을 변경
+            if (this.x < 0 || this.x > canvasWidth) {
+                this.vX *= -1; // 반대 방향으로
+            }
+            // 세로 범위를 이탈하는 경우 이동 방향을 변경
+            if (this.y < 0 || this.y > canvasHeight) {
+                this.vY *= -1; // 반대 방향으로
+            }
+            this.x += this.vX; // 가로 위치 값 변경
+            this.y += this.vY; // 세로 위치 값 변경
+            this.body.style.left = this.x + "px"; //h1태그의 가로 위치 지정
+            this.body.style.top = this.y + "px"; // h1태그에 세로 위치 지정
+        }
+        // 화면이 시작된 경우
+        window.onload = function() {
+            let movingTexts = []; // 배열 객체 생성
+            // 이동하는 텍스트 10개 생성 후 배열에 추가
+            for (let i = 0; i < 10; i++) { 
+                movingTexts.push(new MovingText());
+            }
+            // setInterva(함수, 밀리초) : 밀리초마다 함수 실행
+            let game = setInterval(function(){
+                for (let i in movingTexts) { // 1초에 60번 호출 (=60프레임)
+                    if (total < 4) {
+                        alert("게임 종료!");
+                        // clearInterval(interval_id) : setInterval 취소
+                        clearInterval(game);
+                        return;
+                    }
+                    // movingTexts[i] : MovingText 객체
+                    movingTexts[i].move(); // 텍스트들 이동
+                }
+            },1000/60);
+        }
+    </script>
+</body>
+</html>

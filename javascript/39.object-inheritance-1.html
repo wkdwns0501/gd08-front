@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 상속 1</title>
+</head>
+<body>
+    <script>
+        function Animal(name) {
+            this.name = name;
+            this.cry = function(){}
+        }
+        function Dog(name) {
+            this.base = Animal; // Animal 클래스를 부모 클래스로 설정
+            this.base(name); // 부모클래스의 생성자, 부모클래스 객체
+            this.cry = function(){ // 메서드 오버라이딩 (함수 재정의)
+                document.write(this.name + " : 멍멍<br>");
+            }
+        }
+        function Cat(name) {
+            this.base = Animal; // Animal 클래스를 부모 클래스로 설정
+            this.base(name); // 부모클래스의 생성자, 부모클래스 객체
+            this.cry = function(){ // 메서드 오버라이딩 (함수 재정의)
+                document.write(this.name + " : 야옹<br>");
+            }
+        }
+        let dog = new Dog("강아지");
+        let cat = new Cat("고양이");
+        dog.cry();
+        cat.cry();
+    </script>
+</body>
+</html>

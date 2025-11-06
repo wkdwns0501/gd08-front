@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    <h1>BOM (Browser Object Model)</h1>
+    <pre>
+        window 객체 : 자바스크립트의 최상위 객체 (생략 가능)
+            - location 객체
+            - screen 객체
+            - navigator 객체
+            - history 객체
+            - document 객체
+    </pre>
+    <h3>location 객체</h3>
+    <p>브라우저 주소창과 관련된 객체</p>
+    <button onclick="console.log(location);">실행 확인</button>
+    <a href="http://www.naver.com">네이버로 이동</a>
+    <br>
+    <button onclick="location.href = 'http://www.naver.com';" >네이버 이동</button>
+    <br>
+    <!-- assign : 뒤로가기 가능 -->
+    <div onclick="location.assign ('http://www.google.com')">구글 이동</div>
+    <!-- replace : 뒤로가기 불가능 -->
+    <div onclick="location.replace ('http://www.google.com')">구글 이동</div>
+    <br>
+    <button onclick="location.href = location.href;">새로고침</button>
+    <button onclick="location.reload();">새로고침</button>
+    <h3>screen 객체</h3>
+    <button onclick="console.log(screen)">실행 확인</button>
+    <h3>navigator 객체</h3>
+    <button onclick="console.log(navigator)">실행 확인</button>
+    <h3>history 객체</h3>
+    <button onclick="console.log(history)">실행 확인</button>
+    <hr>
+    <h1>* DOM (Document Object Model)</h1>
+    <!-- 
+        document
+            - html
+                - head
+                    - meta
+                    - title
+                - body
+                    - div
+                        - ul ...
+    -->
+    <!--
+        노드 (Node) : html의 각 요소들
+            - 요소 노드 (Element Node) : 태그 자체
+            - 텍스트 노드 (Text Node) : 태그 내에 기록된 내용
+            - 텍스트 노드 있음 : div, ul, li, ... ( <시작태그>텍스트노드</종료태그>)
+            - 텍스트 노드 없음 : input, img, ... ( <시작태그 ... /> )
+    -->
+    <button onclick="test1()">요소 생성</button>
+    <div id="area1"></div>
+    <script>
+        function test1() {
+            // 방법1. 동적으로 요소 생성 : 문자열 이용
+            // document.querySelector("#area1").innerHTML = "<h3>ㅎㅇ</h3>";
+            // 방법2. 동적으로 요소 생성 : document의 함수를 이용
+            let eleNode = document.createElement("h3"); // <h3></h3>
+            let textNode = document.createTextNode("ㅎㅇ"); // 문자열 객체
+            // 위 두개의 노드 결합
+            eleNode.append(textNode); // <h3>ㅎㅇ</h3>
+            // 출력
+            document.querySelector("#area1").appendChild(eleNode);
+        }
+    </script>
+    <hr>
+    <h4>텍스트 노드가 없는 경우</h4>
+    <button onclick="test2();">요소 생성</button>
+    <div id="area2"></div>
+    <script>
+        function test2() {
+            let img = document.createElement("img"); // <img>
+            img.src = "https://cdn.imweb.me/thumbnail/20251015/283872e695dc9.png";
+            img.width = "100";
+            img.height = "30";
+            document.querySelector("#area2").appendChild(img);
+        }
+    </script>
+    <hr>
+    <h3>노드 삭제 관련 메서드</h3>
+    <button onclick="test3()">요소삭제</button>
+    <script>
+        function test3() {
+            document.querySelector("#area2").firstChild.remove();
+        }
+    </script>
+</body>
+</html>

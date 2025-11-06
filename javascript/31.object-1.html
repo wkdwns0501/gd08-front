@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 1</title>
+</head>
+<body>
+    <script>
+        /* 
+            객체 (object)
+            - 여러개의 값으로 구성된 하나의 데이터를 의미
+            - 중괄호 {} 를 이용하여 표시
+            - 하나의 값이 쌍으로 구성됨
+            {
+                속성 : 값,
+                '속성' : '값', ...
+                property : value
+            }
+            - 객체 속성 확인하기
+                1) 마침표 : 객체.속성
+                2) 대괄호 : 객체['속성']
+        */
+        //객체 생성하기
+        let obj = {
+            'age' : 30,
+            'name' : '길동',
+            'friend' : {
+                'name' : '우치',
+                'phone' : '010-1111-2222'
+            },
+            'hobbies' : ['여행','독서','요리'],
+            'info' : function(){
+                console.log(`이름 : ${obj.name}, 나이 : ${obj.age}, 친구이름 : ${obj.friend.name}`);
+                console.log(`이름 : ${this.name}, 나이 : ${this.age}, 친구이름 : ${this.friend.name}`);
+            }
+        };
+        (obj.info)();
+        (obj['info'])();
+        // 객체의 속성값 확인하기
+        console.log(obj.name,obj['name']);
+        console.log(obj.age,obj['age']);
+        console.log(obj.friend,obj['friend']);
+        console.log(obj.hobbies,obj['hobbies']);
+        // 친구의 전화번호
+        console.log(obj.friend.phone, obj['friend']['phone']);
+        // 취미 전체 출력
+        for (let i = 0; i < obj.hobbies.length; i++) {
+            console.log(obj.hobbies[i]);
+        }
+        for (let i = 0; i < obj['hobbies'].length; i++) {
+            console.log(obj['hobbies'][i]);
+        }
+    </script>
+    <script>
+        console.log("동적으로 속성 추가하기");
+        // 객체의 속성을 동적으로 추가하기
+        let computer = {}; 
+        // 속성 추가하기
+        computer.model = 'gram';
+        computer.price = 150;
+        console.log(computer);
+        console.log("동적으로 속성 제거하기");
+        delete computer.price;
+        console.log(computer);
+    </script>
+    <script>
+        // 속성을 for in 으로 조회하기
+        let book = {
+            'title' : '홍길동전',
+            'author' : '허균',
+            'price' : 10000
+        }
+        for (let p in book){
+            // p : 속성의 이름
+            // for in 구문에서는 마침표를 이용한 속성 참조 불가능
+            // console.log('1.' + p + ' : ' + book.p);
+            // for in 구문에서는 []를 이용한 속성 참조 가능
+            console.log('2.' + p + ' : ' + book[p]);
+        }
+    </script>
+    <div id="box1"></div>
+    <script>
+        /* 
+            결과
+            1. code = A100
+            2. name = 홈런볼
+            3. price = 2000
+        */
+        let snack = {'code' : 'A100', 'name' : '홈런볼', 'price' : 2000};
+        let box1 = document.querySelector("#box1");
+        let cnt = 1;
+        for (let i in snack){
+            box1.innerHTML += `${cnt++}. ${i} = ${snack[i]}<br>`;
+        }
+    </script>
+</body>
+</html>

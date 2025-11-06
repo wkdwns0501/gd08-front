@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기 통신 2</title>
+</head>
+<body>
+    <!-- weather.xml 데이터를 읽어 화면에 표시하기 -->
+    <button id="btn">날씨 조회하기</button>
+    <table border="1">
+        <caption id="date"></caption>
+        <tr>
+            <th>지역명</th>
+            <th>날씨</th>
+            <th>온도</th>
+        </tr>
+        <tbody id="weather_body"></tbody>
+    </table>
+    <script>
+        document.querySelector("#btn").addEventListener('click',()=>{
+            var xhr = new XMLHttpRequest;
+            xhr.open('get', '36.weather.xml', true);
+            xhr.send(); 
+            xhr.addEventListener("readystatechange", ()=> {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let data = xhr.responseXML;
+                    let weatherList = data.getElementsByTagName("local");
+                    // let date = data.getElementsByTagName("weather")[0];
+                    let date = data.querySelector("weather");
+                    let dateStr ="";
+                    dateStr += date.getAttribute("year") + "년 " + date.getAttribute("month") + "월 " + date.getAttribute("day") + "일 " + date.getAttribute("hour") + "시";
+                    document.querySelector("#date").innerHTML = dateStr;
+                    let str = "";
+                    for (let i = 0; i < weatherList.length; i++) {
+                        str += "<tr>";
+                        str += "<td>" + weatherList[i].textContent + "</td>";
+                        str += "<td>" + weatherList[i].getAttribute("desc") + "</td>";
+                        str += "<td>" + weatherList[i].getAttribute("ta") + "</td>";
+                        str += "</tr>";
+                    }
+                    document.querySelector("#weather_body").innerHTML = str;
+                }
+            })
+        })
+    </script>
+</body>
+</html>

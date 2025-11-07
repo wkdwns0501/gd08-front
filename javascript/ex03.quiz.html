@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>실습 문제 3 - 구구단 출력하기</title>
+    <style type="text/css">
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th,
+        td {
+            border: 3px solid #bcbcbc;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #e2e2e2;
+            color: #111111;
+        }
+        td {
+            background-color: #f2f2f2;
+        }
+        caption {
+            color: #111111;
+            font-size: 20px;
+            background-color: #ffffff;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="button" value="세로출력" onclick="print1()">
+    <input type="button" value="가로출력" onclick="print2()">
+    <input type="button" value="2단출력" onclick="print3()">
+    <div id="gugudan"></div>
+</body>
+
+<script>
+    function print1() {
+        let html = `<table>`
+        html += `<caption>구구단 세로 출력</caption>`;
+        for (let i = 2; i <= 9; i++) {
+            html += `<tr>`;
+            html += `<th>${i}단</th>`;
+            html += `</tr>`;
+            for (let j = 2; j <= 9; j++) {
+                let ans = i * j;
+                html += `<tr>`;
+                html += `<td>${i} * ${j} = ${ans}</td>`;
+                html += `</tr>`;
+            }
+        }
+        html += `</table>`;
+        document.querySelector("#gugudan").innerHTML = html;
+    }
+
+    function print2() {
+        let html = `<table>`
+        html += `<caption>구구단 가로 출력</caption>`;
+        html += `<tr>`;
+        for (let i = 2; i <= 9; i++) {
+            html += `<th>${i}단</th>`
+        }
+        html += `</tr>`;
+        for (let j = 2; j <= 9; j++) {
+            html += `<tr>`;
+            for (let i = 2; i <= 9; i++) {
+                let ans = i * j;
+                html += `<td>${i}*${j}=${ans}</td>`
+            }
+            html += `</tr>`
+        }
+        html += `</table>`
+        document.querySelector("#gugudan").innerHTML = html;
+    }
+
+    function print3() {
+        let html = `<table>`
+        html += `<caption>구구단 2단 출력</caption>`;
+        html += `<tr>`
+        for (let i = 2; i <= 5; i++) {
+            html += `<th>${i}단</th>`
+        }
+        html += `</tr>`;
+        for (let j = 2; j <= 9; j++) {
+            html += `<tr>`;
+            for (let i = 2; i <= 5; i++) {
+                let ans = i * j;
+                html += `<td>${i}*${j}=${ans}</td>`
+            }
+            html += `</tr>`
+        }
+        html += `<tr>`
+        for (let i = 6; i <= 9; i++) {
+            html += `<th>${i}단</th>`
+        }
+        html += `</tr>`;
+        html += `<tr>`
+        for (let j = 2; j <= 9; j++) {
+            html += `<tr>`;
+            for (let i = 6; i <= 9; i++) {
+                let ans = i * j;
+                html += `<td>${i}*${j}=${ans}</td>`
+            }
+            html += `</tr>`
+        }
+        html += `</tr>`
+        html += `</table>`
+        document.querySelector("#gugudan").innerHTML = html;
+    }
+</script>
+
+</html>

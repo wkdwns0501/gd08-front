@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 과제 14 - 객체/함수 생성</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        /*
+            정상체중인지 과체중 인지 판단하기 
+
+            정상범위 : 정상몸무게
+            minWeight > 몸무게 : 저체중입니다.
+            maxWeight < 몸무게 : 과체중입니다.	 
+           저체중한계 = (this.userheight - 100) * 0.9 - 5;
+           과체중한계 = (this.userheight - 100) * 0.9 + 5;      
+        */
+        function CheckWeight(name, height, weight) {
+            this.name = name;
+            this.height = height;
+            this.weight = weight;
+        }
+        CheckWeight.prototype.getResult = function() {
+            let minWeight = (this.height - 100) * 0.9 - 5;
+            let maxWeight = (this.height - 100) * 0.9 + 5;
+            // console.log(minWeight);
+            // console.log(maxWeight);
+            if (this.weight < minWeight) {
+                return this.name + "님은 저체중입니다.";
+            } else if (this.weight > maxWeight) {
+                return this.name + "님은 과체중입니다.";
+            } else {
+                return this.name + "님은 정상체중입니다.";
+            }
+        }
+        let jang = new CheckWeight("장보리", 168, 62)
+        let park = new CheckWeight("박달재", 180, 83)
+        document.write(jang.getResult() + "<br>") //정상체중입니다
+        document.write(park.getResult() + "<br>") //과체중입니다.
+    </script>
+</body>
+
+</html>

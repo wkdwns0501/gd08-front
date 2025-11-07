@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- webapp/20230323/imgex2.html -->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>실습 문제 6 - 마우스 이벤트를 이용한 이미지 변경</title>
+</head>
+
+<body>
+    <p>마우스가 이미지 영역 내로 들어오면 이미지를 n_over.jpg 로 변경하기</p>
+    <table>
+        <tr>
+            <td align="center">
+                <a href="#" onmouseover="mover(0)" onmouseout="mout(0)">
+                    <img name="m0" src="img/0_out.jpg"></a>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <a href="#" onmouseover="mover(1)" onmouseout="mout(1)">
+                    <img name="m1" src="img/1_out.jpg"></a>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <a href="#" onmouseover="mover(2)" onmouseout="mout(2)">
+                    <img name="m2" src="img/2_out.jpg"></a>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        let img0 = document.querySelector("img[name=m0]");
+        let img1 = document.querySelector("img[name=m1]");
+        let img2 = document.querySelector("img[name=m2]");
+        img0.addEventListener('mouseenter', function(){
+            img0.src = "img/0_over.jpg";
+        })
+        img0.addEventListener('mouseout', function(){
+            img0.src = "img/0_out.jpg";
+        })
+        img1.addEventListener('mouseenter', function(){
+            img1.src = "img/1_over.jpg";
+        })
+        img1.addEventListener('mouseout', function(){
+            img1.src = "img/1_out.jpg";
+        })
+        img2.addEventListener('mouseenter', function(){
+            img2.src = "img/2_over.jpg";
+        })
+        img2.addEventListener('mouseout', function(){
+            img2.src = "img/2_out.jpg";
+        })
+    </script>
+</body>
+
+</html>

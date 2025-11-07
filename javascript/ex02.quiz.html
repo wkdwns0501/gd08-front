@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>실습 문제 2 - 간이 계산기 만들기</title>
+</head>
+
+<body>
+    <h2>간이 계산기 만들기</h2>
+
+    첫번째 값 : <input type="number" id="num1"><br>
+    두번째 값 : <input type="number" id="num2"><br>
+
+    <!-- 
+        this : 현재 객체를 의미
+        this.value : 현재 객체의 value
+    -->
+
+    <input type="button" value="+" onclick="calculator(this.value);">
+    <input type="button" value="-" onclick="calculator(this.value);">
+    <input type="button" value="x" onclick="calculator(this.value);">
+    <input type="button" value="/" onclick="calculator(this.value);">
+    <input type="button" value="%" onclick="calculator(this.value);"> <br><br>
+    계산결과 : <span id="result"></span>
+
+    <script>
+        function calculator(value) {
+            let num1 = Number(document.querySelector("#num1").value);
+            let num2 = Number(document.querySelector("#num2").value);
+            let result = 0;
+            if (value === '+') {
+                let result = num1 + num2;
+                document.querySelector("#result").innerHTML = result;
+            }
+            else if (value === '-'){
+                let result = num1 - num2;
+                document.querySelector("#result").innerHTML = result;
+            }
+            else if (value === 'x'){
+                let result = num1 * num2;
+                document.querySelector("#result").innerHTML = result;
+            }
+            else if (value === '/'){
+                let result = num1 / num2;
+                document.querySelector("#result").innerHTML = result;
+            }
+            else if (value === '%'){
+                let result = num1 % num2;
+                document.querySelector("#result").innerHTML = result;
+            }
+            
+        }
+    </script>
+
+    <hr>
+
+    <pre>
+	참고 : 각 연산(+, -, *, /, %)들의 버튼들은 input type="button" 으로 작업하시오.
+	
+	<b>Hint</b> 
+	1. 함수에 인자값을 넘길 경우 함수 처리 방법   
+	    ex) -> onclick="calculator(this.value)"; 와 같이 
+		   해당 태그의 value값을 함수에 인자값으로 넘길 수 있음 
+
+	    -> function calculator(val) { val을 통해 조건처리 } 처리 할 수 있음 
+	
+	2. if 문을 사용하시면 됩니다.
+			
+	</pre>
+
+</body>
+
+</html>

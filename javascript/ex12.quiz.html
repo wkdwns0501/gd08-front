@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>실습 과제 12 - 전체 달력 출력하기</title>
+    <style type="text/css">
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th,
+        td {
+            border: 3px solid #bcbcbc;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #e2e2e2;
+            color: #111111;
+        }
+        td {
+            background-color: #f2f2f2;
+        }
+        caption {
+            color: #111111;
+            font-size: 20px;
+            background-color: #ffffff;
+        }
+        .text-red {
+            color: red;
+        }
+        .text-blue {
+            color: blue;
+        }
+        #year {
+            text-align: center;
+        }
+        #cal {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 20px; 
+            justify-items: center;
+            margin-top: 10px;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="y">
+        <option>2020</option>
+        <option>2021</option>
+        <option>2022</option>
+        <option">2023</option>
+            <option>2024</option>
+            <option selected="selected">2025</option>
+            <option>2026</option>
+    </select>
+    <input type="button" value="달력보기" onclick="show_cal()">
+    <br><h2 id="year"></h2>
+    <div id="cal"></div>
+    
+    <script>
+        function show_cal() {
+            let year = document.querySelector("#y").value;
+            document.querySelector("#year").textContent = `${year}년`;
+            let all = "";
+            for(let i = 1; i <= 12; i++) {
+                let day = 1;
+                let html = "";
+                let totalDays = new Date(year,i, 0).getDate();
+                let startDay = new Date(year,i-1, 1).getDay();
+                html += `<table><caption>${i}월</caption>`;
+                html += `<tr>`;
+                html += `<th>일</th>`;
+                html += `<th>월</th>`;
+                html += `<th>화</th>`;
+                html += `<th>수</th>`;
+                html += `<th>목</th>`;
+                html += `<th>금</th>`;
+                html += `<th>토</th>`;
+                html += `</tr>`;
+                html += `<tr>`;
+                for(let i = 0; i < startDay; i++){
+                    html += `<td></td>`;
+                }
+                for (let i = startDay; i < 7; i++){
+                    if (day > totalDays) break;
+                    let dayClass = 
+                        (i === 0) ? "text-red" : (i === 6) ? "text-blue" : "";
+                    html += `<td class="${dayClass}">${day}</td>`;
+                    day++;
+                }
+                html += `</tr>`;
+            
+                while (day <= totalDays) {
+                    html += "<tr>";
+                    for (let i = 0; i < 7; i++){
+                        if (day > totalDays) { 
+                            html +="<td></td>";
+                        }
+                        else {
+                            let dayClass =
+                                (i === 0) ? "text-red" : (i === 6) ? "text-blue" : "";
+                            html += `<td class="${dayClass}">${day}</td>`;
+                        }
+                        day++;
+                    }
+                    html += "</tr>"; 
+                }
+                html += `</table>`; 
+                all += html;
+                }
+                document.querySelector("#cal").innerHTML = all;
+            }
+    </script>
+</body>
+
+</html>

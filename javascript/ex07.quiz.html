@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>실습 문제 - 달력 출력하기</title>
+    <style type="text/css">
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th,
+        td {
+            border: 3px solid #bcbcbc;
+            text-align: center;
+            padding: 8px;
+        }
+        th {
+            background-color: #e2e2e2;
+            color: #111111;
+        }
+        td {
+            background-color: #f2f2f2;
+        }
+        caption {
+            color: #111111;
+            font-size: 20px;
+            background-color: #ffffff;
+        }
+        .text-red {
+            color: red;
+        }
+        .text-blue {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="y">
+        <option>2023</option>
+        <option>2024</option>
+        <option>2025</option>
+        <option>2026</option>
+    </select>
+    <select id="m">
+        <option value="1">1월</option>
+        <option value="2">2월</option>
+        <option value="3">3월</option>
+        <option value="4">4월</option>
+        <option value="5">5월</option>
+        <option value="6">6월</option>
+        <option value="7">7월</option>
+        <option value="8">8월</option>
+        <option value="9">9월</option>
+        <option value="10">10월</option>
+        <option value="11">11월</option>
+        <option value="12">12월</option>
+    </select>
+    <input type="button" value="달력보기" onclick="show_cal()"><br>
+    <span id="cal"></span>
+
+    <script>
+        function show_cal() {
+            // 년도와 월의 값 가져오기
+            let year = document.querySelector("#y").value;
+            let month = document.querySelector("#m").value;
+            // 총 일수 계산
+            // ex)  2025년 10월 선택했을 경우
+            //        year=2025 / month=10
+            //  2025년 10월의 마지막 날 = 2025년 11월 0일
+            //  결론적으로 10월의 총 일수가 된다     //일
+            let totalDays = new Date(year,month,0).getDate();
+            // 시작 요일 계산                                  //요일
+            let startDay = new Date(year,month-1,1).getDay();
+            // 날짜는 1일 부터 시작
+            let day = 1;
+            // 테이블 시작 및 제목
+            let html = `<table><caption>${year}년 ${month}월</caption>`;
+            // 요일
+            html += `<tr>`;
+            html += `<th>일</th>`;
+            html += `<th>월</th>`;
+            html += `<th>화</th>`;
+            html += `<th>수</th>`;
+            html += `<th>목</th>`;
+            html += `<th>금</th>`;
+            html += `<th>토</th>`;
+            html += `</tr>`;
+            // 첫 줄 시작요일 계산 후 빈 셀 출력
+            html += `<tr>`;
+            for(let i = 0; i < startDay; i++){
+                html += `<td></td>`;
+            }
+            // 첫 줄 나머지 셀 날짜 계산 및 글자색 적용
+            for (let i = startDay; i < 7; i++){
+                // 삼항연산자 안에 삼항연산자
+                let dayClass = 
+                    (i === 0) ? "text-red" : (i === 6) ? "text-blue" : "";
+                html += `<td class="${dayClass}">${day}</td>`;
+                day++;
+            }
+            html += `</tr>`;
+            // 나머지 부분 날짜 계산 및 글자색 적용
+            while (day <= totalDays) {
+                html += "<tr>";
+                for (let i = 0; i < 7; i++){
+                    // 현재 일수가 총 일수보다 커진다면 빈 셀 출력
+                    if (day > totalDays) { 
+                        html +="<td></td>";
+                    }
+                    else { // 아니라면 날짜 계산 및 글자색 적용
+                        // 삼항연산자 안에 삼항연산자
+                        let dayClass =
+                            (i === 0) ? "text-red" : (i === 6) ? "text-blue" : "";
+                        html += `<td class="${dayClass}">${day}</td>`;
+                    }
+                    day++;
+                }
+                html += "</tr>"; 
+            }
+            html += `</table>`; 
+
+            document.querySelector("#cal").innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>

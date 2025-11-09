@@ -1,0 +1,130 @@
+body { /* 전체 */
+    height: 100vh; /* 사용자 창(뷰포트)에 100% */
+    background-color: #eef7f3; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container { /* 내용 컨테이너 */
+    width: 500px;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+h1 { /* 제목 */
+    color: brown; 
+    margin: 0;
+    margin-bottom: 20px;
+}
+.nav { /* score-box 2개 + startBtn */
+    width: 440px;
+    margin: 0px 30px 20px 30px;
+    display: flex;
+    justify-content: space-between;
+}
+.panel { /* score-box 2개 */
+    display: flex;
+}
+.score-box { /* score + time */
+    background-color: antiquewhite;
+    height: 50px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.score-box p { 
+    font-size: 17px; 
+    margin: 0; 
+}
+.score-box div { 
+    font-size: 18px; 
+    font-weight: bold;
+}
+#gameField { /* 두더지게임 필드 */
+    width: 400px;
+    height: 400px;
+    display: grid;
+    /* 세로줄(열) 3개 (너비 균등) */
+    grid-template-columns: repeat(3, 1fr); 
+    /* 가로줄(행) 3개 (높이 균등) */
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 15px;
+    border: 2px solid gray;
+    background-color: #a0522d; /* 흙 색깔 */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+.mole-hole { /* 두더지 구멍 */
+    background-color: #795548;
+    border: 3px solid #5d4037;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; 
+    overflow: hidden; 
+    position: relative;
+}
+.mole { /* 두더지 */
+    width: 100%;
+    height: 100%;
+    background-color: #8d6e63;
+    border-radius: 50%;
+    bottom: -100%; /* 밑으로 내려가 있는 상태 */
+    /* 0.2초 동안 빠르게 시작해서 느리게 끝나는 패턴으로 움직여라 */
+    transition: bottom 0.2s ease-out; /* 두더지 움직임 */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: absolute;
+}
+/* mole-hole과 mole-up 동시에 가진 요소 안에 자식요소인 mole 선택 */
+.mole-hole.mole-up .mole { /* 구멍에서 올라온 두더지 요소 */
+    bottom: 0%; /* 완전히 올라온 상태 */
+    cursor: pointer;
+}
+/* 올라온 두더지를 클릭시 */
+.mole-up img:active {
+    transform: scale(0.9);
+    transition: transform 0.1s;
+}
+#statusDisplay { /* 상태 표시 */
+    min-height: 25px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+#startBtn { /* 시작 버튼 */
+    width: 86px;
+    background-color: #ffd32a;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin-left: 10px;
+}
+#startBtn:hover {
+    background-color: #ffc048;
+}
+#resetBtn {
+    width: 86px;
+    background-color: #1dd1a1;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin-left: 10px;
+}
+#resetBtn:hover {
+    background-color: #10ac84;
+}

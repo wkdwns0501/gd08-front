@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인 프로젝트 - 게임 만들기 (두더지 잡기)</title>
+    <link rel="stylesheet" href="css/mole-game.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🦔 두더지 잡기 게임 🦔</h1>
+        <div class="nav">
+            <div class="panel">
+                <div class="score-box">
+                    <p>점수</p>
+                    <div id="scoreDisplay">0</div>
+                </div>
+                <div class="score-box">
+                    <p>남은 시간(초)</p>   
+                    <div id="timeDisplay">30</div>
+                </div>
+            </div>
+            <div class="panel">
+                <button id="resetBtn">초기화</button>
+                <button id="startBtn">게임시작</button>
+            </div>
+        </div>
+        <div id="gameField"></div>
+        <div id="statusDisplay">게임시작 버튼을 눌러 시작하세요!</div>
+    </div>
+
+    <!-- js-$() -->
+    <script type="module" src="./js-$()/main.js"></script>
+
+    <!-- js-$()-simple -->
+    <!-- <script defer src="./js-$()-simple/helper.js"></script>
+    <script defer src="./js-$()-simple/app.js"></script> -->
+
+    <!-- js-namespace -->
+    <!-- <script defer src="./js-namespace/config.js"></script>
+    <script defer src="./js-namespace/state.js"></script>
+    <script defer src="./js-namespace/dom.js"></script>
+    <script defer src="./js-namespace/ui.js"></script>
+    <script defer src="./js-namespace/game.js"></script>
+    <script defer src="./js-namespace/main.js"></script> -->
+
+</body>
+</html>
